@@ -25,6 +25,7 @@
 .e-nav {
     top: 0;
     position: fixed;
+    z-index: 100;
     width: 100vw;
     background-color:#660066 !important;
 }
