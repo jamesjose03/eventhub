@@ -1,14 +1,18 @@
 <template>
     <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light e-nav">
-    <a class="navbar-brand e-title" href="#">EventHub</a>
+    <router-link :to="{name: 'home'}">
+    <a class="navbar-brand e-title">EventHub</a>
+    </router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse e-nav-item" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
+        <router-link :to="{name: 'login'}">
         <button class = "nav-link e-btn">Login </button>
+        </router-link>>
       </li>
     </ul>
     
@@ -38,6 +42,9 @@
   background-color: #d896ff !important;
   border-radius: 40px;
   width: 128px;
+  text-decoration: none;
+  position: fixed;
+  margin-top: -0.5vw;
 }
 
 .e-btn:hover{
