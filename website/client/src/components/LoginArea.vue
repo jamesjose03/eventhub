@@ -21,8 +21,7 @@
     </div>
 </template>
 
-<style>
-    
+<style>    
     .e-login-fields{
         align-content: center;
         align-items: center;
@@ -40,8 +39,38 @@
         box-shadow: black;
         height: 25vw;
         width: 40vw;
+        
+        
     }
+    .container:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+  }
+
+  .container:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: #00838d;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(2);
+    transform-origin: 50% 50%;
+    transition: transform 0.15s ease-out;
+  }
+
+  .container:hover:before {
+    transform: scale(2.55);
+  }
+    
     .e-login-page{
+        font-family: 'Merriweather', serif;
         background-color: #d4418e;
         background-image: linear-gradient(315deg, #d4418e 0%, #0652c5 74%);
         position: fixed;
