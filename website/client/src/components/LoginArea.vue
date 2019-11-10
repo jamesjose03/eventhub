@@ -4,19 +4,20 @@
         <h1 class="e-lhead">Login</h1>
         <p>Welcome back! Login here to register for events or to host them!</p>
         <form>
-        <div class="form-group">
-            <input type="email" v-model="email" class="e-login-fields" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-         
+        <div class="group">
+        <input type="email"><span class="highlight"></span><span class="bar"></span>
+        <label>Email</label>
         </div>
-        <div class="form-group">
-            <input type="password" class="e-login-fields" id="exampleInputPassword1" placeholder="Password">
+        <div class="group">
+         <input type="password"><span class="highlight"></span><span class="bar"></span>
+         <label>Password</label>
         </div>
-  
-        <button type="submit" class="btn btn-primary e-btn-1">Login</button>
+        <button type="button" class="button e-btn-1">Login
+        </button>
 </form>
+
 <br>
-<p>Forgot password? <a href="#">Click Here</a></p>
-<p>Have not yet registered? <a href="">Sign Up</a></p>
+<p>Forgot password? <a href="#">Click Here</a>| Have not yet registered? <a href="">Sign Up</a></p>
     </div>
     </div>
 </template>
@@ -56,7 +57,7 @@
     z-index: -1;
     top: -16px;
     right: -16px;
-    background: #00838d;
+    background: #d896ff !important;
     height: 32px;
     width: 32px;
     border-radius: 32px;
@@ -79,7 +80,7 @@
         width: 100vw;
     }
     .e-lhead{
-        margin-top: 4vw;
+        margin-top: 1vw;
     }
     .e-btn-1{
   border: none;
@@ -88,8 +89,117 @@
   border-radius: 40px;
   width: 128px;
   text-decoration: none;
+  height: 27px;
     }
     .e-btn-1:hover{
         background-color: #efbbff !important;
     }
+
+    form {
+	width: 380px;
+	margin: 1em auto;
+	
+}
+
+.group { 
+	position: relative; 
+	margin-bottom: 45px; 
+}
+
+input {
+	font-size: 18px;
+	padding: 10px 10px 10px 5px;
+	-webkit-appearance: none;
+	display: block;
+	background: #fafafa;
+	color: #636363;
+	width: 100%;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid #757575;
+}
+
+input:focus { outline: none; }
+
+
+/* Label */
+
+label {
+	color: #999; 
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5px;
+	top: -20px;
+	transition: all 0.2s ease;
+}
+
+
+/* active */
+
+input:focus ~ label, input.used ~ label {
+	top: -20px;
+  transform: scale(.75); left: -2px;
+	/* font-size: 14px; */
+    color: #660066 ; 
+}
+
+
+/* Underline */
+
+.bar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.bar:before, .bar:after {
+	content: '';
+	height: 2px; 
+	width: 0;
+	bottom: 1px; 
+	position: absolute;
+	background: #660066 !important; 
+	transition: all 0.2s ease;
+}
+
+.bar:before { left: 50%; }
+
+.bar:after { right: 50%; }
+
+
+/* active */
+
+input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
+
+
+/* Highlight */
+
+.highlight {
+	position: absolute;
+	height: 60%; 
+	width: 100px; 
+	top: 25%; 
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+
+/* active */
+
+input:focus ~ .highlight {
+	animation: inputHighlighter 0.3s ease;
+}
+
+
+/* Animations */
+
+@keyframes inputHighlighter {
+	from { background:  #660066 !important; ; }
+	to 	{ width: 0; background: transparent; }
+}
+
+
 </style>
