@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./components/Home.vue";
 import Navbar from "./views/Navbar.vue";
 import Login from "./components/Login.vue";
+import Dashboard from "./components/Dashboard.vue"
 
 Vue.use(Router);
 
@@ -29,7 +30,12 @@ export default new Router({
 	  path: "/login",
 	  name: "login",
 	  component: Login
-	}
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: Dashboard
+  }
   ]
 });
 
