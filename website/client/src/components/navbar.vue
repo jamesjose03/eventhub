@@ -10,9 +10,7 @@
   <div class="collapse navbar-collapse e-nav-item" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <router-link :to="{name: 'login'}">
-        <button class = "nav-link e-btn">Login </button>
-        </router-link>>
+  
       </li>
     </ul>
     
@@ -20,6 +18,18 @@
 </nav>
     </div>
 </template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      ok: true
+    }
+  },
+  
+}
+</script>
 
 <style>
 .e-title{
