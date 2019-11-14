@@ -1,6 +1,7 @@
 <template>
     <div>
         <Navbar />
+        <SideNav />
         <UserIcon />
         <DashboardArea />
     </div>
@@ -10,6 +11,7 @@
 import Navbar from "@/components/navbar.vue"
 import UserIcon from "@/components/UserIcon.vue"
 import DashboardArea from "@/components/DashboardArea.vue"
+import SideNav from "@/components/SideNav.vue"
 export default {
     data() {
         return {
@@ -20,7 +22,8 @@ export default {
     {
         Navbar,
         UserIcon,
-        DashboardArea
+        DashboardArea,
+        SideNav
     }
 }
 </script>
