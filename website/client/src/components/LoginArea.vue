@@ -22,7 +22,7 @@
     </div>
 </template>
 
-<style>    
+<style scoped>    
     .e-login-fields{
         align-content: center;
         align-items: center;
