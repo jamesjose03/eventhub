@@ -1,29 +1,21 @@
 <template>
     <div>
     <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" @click="closeNav()"><i class="fas fa-times"></i></a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <a href="#">Profile</a>
+    <a href="#">Events Nearby</a>
+    <a href="#">Wishlist</a>
+    <a href="#">Certificates</a>
+    <button class="e-signout-btn">Sign Out</button>
 </div>
 
-<!-- Use any element to open the sidenav -->
-<span @click="openNav()"><i class="fas fa-arrow-right"></i></span>
+
 
     </div>
 </template>
 
 <script>
 export default {
-    methods: {
-        openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        },
-        closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    },
+   
 }
 </script>
 
@@ -31,12 +23,15 @@ export default {
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
+  width: 250px;
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: #111; /* Black*/
+  background: -moz-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
+  background: -webkit-linear-gradient(-45deg, #e2a9e5 15%,#2b94e5 100%);
+  background: linear-gradient(135deg, #e2a9e5 15%,#2b94e5 100%);
+
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -50,7 +45,7 @@ cursor: pointer;
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #000;
   display: block;
   transition: 0.3s;
 }
@@ -60,14 +55,18 @@ cursor: pointer;
   color: #f1f1f1;
 }
 
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-  margin-top: 3vw;
-  margin-right: -1vw;
+.e-signout-btn{
+    background-color: #d896ff !important;
+    border-radius: 40px;
+    border: none;
+    height: 50px;
+    width: 130px;
+    margin-left: 1.6vw;
+    margin-top: 25vw;
 }
+.e-signout-btn:hover{
+    cursor: pointer;
+     background-color: #efbbff !important;
+}
+
 </style>
