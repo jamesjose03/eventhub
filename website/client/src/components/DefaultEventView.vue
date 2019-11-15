@@ -1,5 +1,5 @@
 <template>
     <div>
-        <h1>Default view</h1>
+        <h1>Click any of the buttons to start...</h1>
     </div>
 </template>

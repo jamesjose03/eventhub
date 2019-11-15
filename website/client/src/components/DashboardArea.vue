@@ -43,6 +43,9 @@ export default {
 }
 </script>
 <style>
+.card:hover{
+  cursor: pointer;
+}
 .dashboard-area{
     margin-top: 1vw;
 }
@@ -51,5 +54,8 @@ export default {
 }
 .left-card{
     margin-left: 26vw;
+}
+.card-title{
+  font-family: 'Roboto', cursive;
 }
 </style>

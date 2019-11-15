@@ -1,152 +1,231 @@
 <template>
     <div class="e-upcoming">
-        <h1>Upcoming Events</h1>
+        <h1 class="e-upcoming-heading">Upcoming Events</h1>
         <p>Here are your upcoming events:</p>
-         <div class="timeline">
-  <div class="container left">
-    <div class="content">
-      <h2>2019</h2>
-      <p>Lorem ipsum..</p>
+         <div class="page">
+  <div class="timeline">
+    <div class="timeline__group">
+      <span class="timeline__year">2019</span>
+      <div class="timeline__box">
+        <div class="timeline__date">
+          <span class="timeline__day">2</span>
+          <span class="timeline__month">Feb</span>
+        </div>
+        <div class="timeline__post">
+          <div class="timeline__content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, est.</p>
+          </div>
+        </div>
+      </div>
+      <div class="timeline__box">
+        <div class="timeline__date">
+          <span class="timeline__day">1</span>
+          <span class="timeline__month">Sept</span>
+        </div>
+        <div class="timeline__post">
+          <div class="timeline__content">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit, tempore.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline__group">
+      <span class="timeline__year">2020</span>
+      <div class="timeline__box">
+        <div class="timeline__date">
+          <span class="timeline__day">14</span>
+          <span class="timeline__month">Jul</span>
+        </div>
+        <div class="timeline__post">
+          <div class="timeline__content">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit, eaque.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline__group">
+      <span class="timeline__year">2021</span>
+      <div class="timeline__box">
+        <div class="timeline__date">
+          <span class="timeline__day">28</span>
+          <span class="timeline__month">Aug</span>
+        </div>
+        <div class="timeline__post">
+          <div class="timeline__content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, aut.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="container right">
-    <div class="content">
-      <h2>2020</h2>
-      <p>Lorem ipsum..</p>
-    </div>
-  </div>
-</div> 
+</div>
+
+
+
     </div>
 </template>
 
-<style>
-* {
-  box-sizing: border-box;
+<style scoped>
+.e-upcoming-heading{
+  font-family: 'Staatliches', cursive;
 }
 
+.timeline{
+  --uiTimelineMainColor: var(--timelineMainColor, #222);
+  --uiTimelineSecondaryColor: var(--timelineSecondaryColor, #fff);
 
-/* The actual timeline (the vertical ruler) */
-.timeline {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-top: -10vw;
 }
 
-/* The actual timeline (the vertical ruler) */
-.timeline::after {
-  content: '';
+.timeline:before{
+  content: "";
+  width: 4px;
+  height: 100%;
+  background-color: var(--uiTimelineMainColor);
+
   position: absolute;
-  width: 6px;
-  background-color: black;
   top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -3px;
 }
 
-/* Container around content */
-.container {
-  padding: 10px 40px;
+.timeline__group{
   position: relative;
-  background-color: inherit;
-  width: 50%;
 }
 
-/* The circles on the timeline */
-.container::after {
-  content: '';
+.timeline__group:not(:first-of-type){
+  margin-top: 4rem;
+}
+
+.timeline__year{
+  padding: .5rem 1.5rem;
+  color: var(--uiTimelineSecondaryColor);
+  background-color: var(--uiTimelineMainColor);
+
   position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -17px;
-  background-color: black;
-  border: 4px solid #FF9F55;
-  top: 15px;
-  border-radius: 50%;
-  z-index: 1;
+  left: 0;
+  top: 0;
 }
 
-/* Place the container to the left */
-.left {
-  left: -30%;
-}
-
-/* Place the container to the right */
-.right {
-  left: 30%;
-}
-
-/* Add arrows to the left container (pointing right) */
-.left::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  right: 30px;
-  border: medium solid black;
-  border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent black;
-}
-
-/* Add arrows to the right container (pointing left) */
-.right::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  left: 30px;
-  border: medium solid black;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent black transparent transparent;
-}
-
-/* Fix the circle for containers on the right side */
-.right::after {
-  left: -16px;
-}
-
-/* The actual content */
-.content {
-  padding: 20px 30px;
-  background-color: white;
+.timeline__box{
   position: relative;
-  border-radius: 6px;
 }
 
-/* Media queries - Responsive timeline on screens less than 600px wide */
-@media screen and (max-width: 600px) {
-/* Place the timelime to the left */
-  .timeline::after {
-    left: 31px;
+.timeline__box:not(:last-of-type){
+  margin-bottom: 30px;
+}
+
+.timeline__box:before{
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: var(--uiTimelineMainColor);
+
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+
+.timeline__date{
+  min-width: 65px;
+  position: absolute;
+  left: 0;
+
+  box-sizing: border-box;
+  padding: .5rem 1.5rem;
+  text-align: center;
+
+  background-color: var(--uiTimelineMainColor);
+  color: var(--uiTimelineSecondaryColor);
+}
+
+.timeline__day{
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+}
+
+.timeline__month{
+  display: block;
+  font-size: .8em;
+  text-transform: uppercase;
+}
+
+.timeline__post{
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  border-left: 3px solid var(--uiTimelineMainColor);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+  background-color: var(--uiTimelineSecondaryColor);
+  margin-left: 2vw;
+}
+
+@media screen and (min-width: 641px){
+
+  .timeline:before{
+    left: 30px;
   }
 
-/* Full-width containers */
-  .container {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
+  .timeline__group{
+    padding-top: 55px;
   }
 
-/* Make sure that all arrows are pointing leftwards */
-  .container::before {
-    left: 60px;
-    border: medium solid white;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+  .timeline__box{
+    padding-left: 80px;
   }
 
-/* Make sure all circles are at the same spot */
-  .left::after, .right::after {
-    left: 15px;
-  }
+  .timeline__box:before{
+    top: 50%;
+    transform: translateY(-50%);  
+  }  
 
-/* Make all right containers behave like the left ones */
-  .right {
-    left: 0%;
+  .timeline__date{
+    top: 50%;
+    margin-top: -27px;
   }
 }
+
+@media screen and (max-width: 640px){
+
+  .timeline:before{
+    left: 0;
+  }
+
+  .timeline__group{
+    padding-top: 40px;
+  }
+
+  .timeline__box{
+    padding-left: 20px;
+    padding-top: 70px;
+  }
+
+  .timeline__box:before{
+    top: 90px;
+  }    
+
+  .timeline__date{
+    top: 0;
+  }
+}
+
+.timeline{
+  --timelineMainColor: #660066;
+  font-size: 16px;
+}
+
+
+
+
+.page{
+  max-width: 800px;
+  padding: 10rem 2rem 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  order: 1;
+}
+
+
+
 </style>
