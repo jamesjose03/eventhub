@@ -1,11 +1,11 @@
 <template>
     <div>
     <div id="mySidenav" class="sidenav">
-    <a href="#">Profile</a>
-    <a href="#">Events Nearby</a>
-    <a href="#">Wishlist</a>
-    <a href="#">Certificates</a>
-    <button class="e-signout-btn">Sign Out</button>
+    <a href="#" class="sicon"><i class="far fa-user e-sidenavicon"></i>Profile</a>
+    <a href="#"><i class="far fa-calendar-check e-sidenavicon"></i>Events Nearby</a>
+    <a href="#" class="sicon"><i class="far fa-heart e-sidenavicon"></i>Wishlist</a>
+    <a href="#" class="sicon-1"><i class="fas fa-certificate e-sidenavicon"></i>Certificates</a>
+    <button class="e-signout-btn"><i class="fas fa-sign-out-alt e-sidenavicon"></i>Sign Out</button>
 </div>
 
 
@@ -20,6 +20,15 @@ export default {
 </script>
 
 <style>
+.sicon{
+    margin-right: 5vw;
+}
+.sicon-1{
+    margin-right: 1.9vw;
+}
+.e-sidenavicon{
+    margin-right: 1vw;
+}
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */

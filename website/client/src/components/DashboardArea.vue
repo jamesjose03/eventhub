@@ -1,6 +1,6 @@
 <template>
     <div class="dashboard-area">
-        <span class="welcome-msg"> Welcome User!</span>
+   
         <div class="row">
             <div class="col-sm-6">
             <div class="card e-eventcard e-card left-card">
