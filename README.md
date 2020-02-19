@@ -1,6 +1,6 @@
 # eventhub
 Event Manager
 ## Stack: 
-Vue.js - Front End
+Vue.js - Front End<br>
 Node.js & Express - Back End
-MongoDB - Database
+<br>MongoDB - Database
