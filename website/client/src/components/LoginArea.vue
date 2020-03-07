@@ -12,8 +12,7 @@
          <input type="password"><span class="highlight"></span><span class="bar"></span>
          <label>Password</label>
         </div>
-        <button type="button" class="button e-btn-1">Login
-        </button>
+        <input type="submit" value="Login" class="button e-btn-1">
 </form>
 
 <br>
@@ -38,8 +37,8 @@
         margin-top: 25vw;
         border-radius: 40px;
         box-shadow: black;
-        height: 25vw;
-        width: 40vw;
+        height: 27vw;
+        width: 45vw;
         
         
     }
@@ -87,9 +86,12 @@
   font-family: 'Roboto', sans-serif;
   background-color: #d896ff !important;
   border-radius: 40px;
-  width: 128px;
+  width: 150px;
   text-decoration: none;
-  height: 27px;
+  height: 31px;
+  padding: 1px;
+  display: initial;
+  color: #000;
     }
     .e-btn-1:hover{
         background-color: #efbbff !important;
