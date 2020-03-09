@@ -1,9 +1,23 @@
 <template>
-    <div class= "e-login-page">
+<div>
+<Navbar />
+    <div class= "e-signup-page">
         <div class=" card container">
-        <h1 class="e-lhead">Login</h1>
-        <p>Welcome back! Login here to register for events or to host them!</p>
-        <form>
+        <h1 class="e-lhead">Sign Up</h1>
+        <p>Welcome! Sign Up to create an account & explore our platform.</p>
+        <form method="POST">
+        <div class="group">
+        <input type="text"><span class="highlight"></span><span class="bar"></span>
+        <label>Name</label>
+        </div>
+        <div class="group">
+        <select name="category" id="category">
+            <option value="student">Student</option>
+            <option value="organizer">Organizer</option>
+            <option value="college">College</option>
+        </select>
+        <label class="e-category-label">Category</label>
+        </div>
         <div class="group">
         <input type="email"><span class="highlight"></span><span class="bar"></span>
         <label>Email</label>
@@ -12,17 +26,29 @@
          <input type="password"><span class="highlight"></span><span class="bar"></span>
          <label>Password</label>
         </div>
-        <input type="submit" value="Login" class="button e-btn-1">
+        <input type="submit" value="Sign Up" class="button e-btn-1">
 </form>
 
 <br>
-<p>Forgot password? <a href="#">Click Here</a>| Have not yet registered? <router-link :to="{name: 'signup'}"><a href="">Sign Up</a></router-link></p>
+    </div>
     </div>
     </div>
 </template>
+<script>
+import Navbar from "@/components/navbar.vue"
+export default {
+        data() {
+            return {
 
+            }
+        },
+        components: {
+            Navbar
+        }
+    } 
+</script>
 <style scoped>    
-    .e-login-fields{
+    .e-signup-fields{
         align-content: center;
         align-items: center;
         width: 25vw;
@@ -34,10 +60,10 @@
     }
     .container{
         background-color: white;
-        margin-top: 25vw;
+        margin-top: 20vw;
         border-radius: 40px;
         box-shadow: black;
-        height: 27vw;
+        height: 35vw;
         width: 45vw;
         
         
@@ -69,7 +95,7 @@
     transform: scale(2.55);
   }
     
-    .e-login-page{
+    .e-signup-page{
         font-family: 'Merriweather', serif;
         background-color: #d4418e;
         background-image: linear-gradient(315deg, #d4418e 0%, #0652c5 74%);
@@ -95,6 +121,9 @@
     }
     .e-btn-1:hover{
         background-color: #efbbff !important;
+    }
+    .e-category-label{
+        margin-top: 1vw;
     }
 
     form {
