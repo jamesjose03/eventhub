@@ -4,6 +4,7 @@ import Home from "./components/Home.vue";
 import Navbar from "./views/Navbar.vue";
 import Login from "./components/Login.vue";
 import Dashboard from "./components/Dashboard.vue"
+import SignUp from "./components/SignUp.vue"
 
 Vue.use(Router);
 
@@ -35,6 +36,11 @@ export default new Router({
     path: "/dashboard",
     name: "dashboard",
     component: Dashboard
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: SignUp
   }
   ]
 });
