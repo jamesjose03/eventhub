@@ -1,13 +1,16 @@
-// Define your routes
-import express from 'express';
-import path from 'path';
+const express = require('express');
 const router = express.Router();
+const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
-// Routes go here.
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views', 'index.html'));
-});
+// Welcome Page
+router.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
 
-// Use localhost:9000/api followed by the required path.
+// Dashboard
+router.get('/dashboard', ensureAuthenticated, (req, res) =>
+  res.render('dashboard', {
+    user: req.user
+  })
+);
 
 module.exports = router;
+
