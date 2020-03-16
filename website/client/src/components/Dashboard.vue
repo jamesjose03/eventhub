@@ -1,9 +1,10 @@
 <template>
     <div>
         <Navbar />
-        <SideNav />
+        Welcome {{ JSON.parse(username) }}
+       <!-- <SideNav />
         <UserIcon />
-        <DashboardArea />
+        <DashboardArea /> -->
     </div>
 </template>
 
@@ -15,7 +16,8 @@ import SideNav from "@/components/SideNav.vue"
 export default {
     data() {
         return {
-            ok: false
+            ok: false,
+            username: localStorage.getItem('user')
         }
     },
     components:

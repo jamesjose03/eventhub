@@ -6,11 +6,6 @@ const passport = require('passport');
 const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
 
-// Login Page
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
-
-// Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
 // Register
 router.post('/register', (req, res) => {
@@ -30,24 +25,12 @@ router.post('/register', (req, res) => {
   }
 
   if (errors.length > 0) {
-    res.render('register', {
-      errors,
-      name,
-      email,
-      password,
-      password2
-    });
+    res.send({"status": "error", "errors": errors})
   } else {
     User.findOne({ email: email }).then(user => {
       if (user) {
         errors.push({ msg: 'Email already exists' });
-        res.render('register', {
-          errors,
-          name,
-          email,
-          password,
-          password2
-        });
+        res.send({"status": "error", "errors": errors})
       } else {
         const newUser = new User({
           name,
@@ -66,7 +49,7 @@ router.post('/register', (req, res) => {
                   'success_msg',
                   'You are now registered and can log in'
                 );
-                res.redirect('/users/login');
+                res.send({"status": "Success", "user": user.name, "email": user.email})
               })
               .catch(err => console.log(err));
           });
@@ -77,14 +60,11 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
-    failureFlash: true
-  })(req, res, next);
-});
-
+router.post('/login',
+  passport.authenticate('local'),
+  function(req, res) {
+    res.json({"status":"Success", "username": req.user.name});
+  });
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();

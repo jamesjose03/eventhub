@@ -5,10 +5,11 @@ import Navbar from "./views/Navbar.vue";
 import Login from "./components/Login.vue";
 import Dashboard from "./components/Dashboard.vue"
 import SignUp from "./components/SignUp.vue"
+import Users from "./components/Users.vue"
 
 Vue.use(Router);
 
-export default new Router({
+let router =  new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -32,17 +33,55 @@ export default new Router({
 	  name: "login",
 	  component: Login
   },
+  
+  {
+    path: "/signup",
+    name: "signup",
+    component: SignUp
+  },
   {
     path: "/dashboard",
     name: "dashboard",
     component: Dashboard
   },
   {
-    path: "/signup",
-    name: "signup",
-    component: SignUp
+    path: "/user",
+    name: "user",
+    component: Users
   }
   ]
 });
 
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+      if (localStorage.getItem('jwt') == null) {
+          next({
+              path: '/login',
+              params: { nextUrl: to.fullPath }
+          })
+      } else {
+          let user = JSON.parse(localStorage.getItem('user'))
+          if(to.matched.some(record => record.meta.is_admin)) {
+              if(user.is_admin == 1){
+                  next()
+              }
+              else{
+                  next({ name: 'dashboard'})
+              }
+          }else {
+              next()
+          }
+      }
+  } else if(to.matched.some(record => record.meta.guest)) {
+      if(localStorage.getItem('jwt') == null){
+          next()
+      }
+      else{
+          next({ name: 'dashboard'})
+      }
+  }else {
+      next()
+  }
+})
 
+export default router

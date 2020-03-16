@@ -7,26 +7,30 @@
         <p>Welcome! Sign Up to create an account & explore our platform.</p>
         <form method="POST">
         <div class="group">
-        <input type="text"><span class="highlight"></span><span class="bar"></span>
+        <input type="text" v-model="name"><span class="highlight"></span><span class="bar"></span>
         <label>Name</label>
         </div>
-        <div class="group">
+        <!--<div class="group">
         <select name="category" id="category">
             <option value="student">Student</option>
             <option value="organizer">Organizer</option>
             <option value="college">College</option>
         </select>
         <label class="e-category-label">Category</label>
-        </div>
+        </div>-->
         <div class="group">
-        <input type="email"><span class="highlight"></span><span class="bar"></span>
+        <input type="email" v-model="email"><span class="highlight"></span><span class="bar"></span>
         <label>Email</label>
         </div>
         <div class="group">
-         <input type="password"><span class="highlight"></span><span class="bar"></span>
+         <input type="password" v-model="password"><span class="highlight"></span><span class="bar"></span>
          <label>Password</label>
         </div>
-        <input type="submit" value="Sign Up" class="button e-btn-1">
+        <div class="group">
+         <input type="password" v-model="password2"><span class="highlight"></span><span class="bar"></span>
+         <label>Confirm Password</label>
+        </div>
+        <input type="submit" value="Sign Up" class="button e-btn-1"  @click="handleSubmit">
 </form>
 
 <br>
@@ -39,7 +43,45 @@ import Navbar from "@/components/navbar.vue"
 export default {
         data() {
             return {
-
+                name: "",
+                email: "",
+                password: "",
+                password2: ""
+            }
+        },
+        methods: {
+            handleSubmit(e) {
+                e.preventDefault();
+                if(this.password == this.password2 && this.password.length>0) {
+                    let url = "http://localhost:9000/users/register"
+                    this.$http.post(url, {
+                        name: this.name,
+                        email: this.email,
+                        password: this.password,
+                        password2: this.password2
+                    })
+                    .then(response => {
+                        localStorage.setItem('user',JSON.stringify(response.data.user))
+                       // localStorage.setItem('jwt',response.data.token)
+                        if(localStorage.getItem('user')!=null) {
+                            this.$emit('loggedIn')
+                            if(this.$route.params.nextUrl != null) {
+                                this.$router.push(this.$route.params.nextUrl)
+                            }
+                            else {
+                                this.$router.push('/dashboard')
+                            } 
+                        }
+                    })
+                    .catch(error=>{
+                        console.log(error)
+                    })
+                }
+                else {
+                    this.password = ""
+                    this.password2 = ""
+                    return alert("Passwords do not match!")
+                }
             }
         },
         components: {

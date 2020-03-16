@@ -5,14 +5,14 @@
         <p>Welcome back! Login here to register for events or to host them!</p>
         <form>
         <div class="group">
-        <input type="email"><span class="highlight"></span><span class="bar"></span>
+        <input type="email" v-model="email"><span class="highlight"></span><span class="bar"></span>
         <label>Email</label>
         </div>
         <div class="group">
-         <input type="password"><span class="highlight"></span><span class="bar"></span>
+         <input type="password" v-model="password"><span class="highlight"></span><span class="bar"></span>
          <label>Password</label>
         </div>
-        <input type="submit" value="Login" class="button e-btn-1">
+        <input type="submit" value="Login" class="button e-btn-1" @click= "handleSubmit">
 </form>
 
 <br>
@@ -20,6 +20,44 @@
     </div>
     </div>
 </template>
+
+<script>
+import Vue from 'vue';
+export default {
+    data() {
+        return {
+            email: "",
+            password: ""
+        }
+    },
+    methods: {
+        handleSubmit(e) {
+            e.preventDefault()
+            if(this.password.length >0) {
+                let url = "http://localhost:9000/users/login"
+                this.$http.post(url, {
+                    email: this.email,
+                    password: this.password
+                })
+                .then(response => {
+                    localStorage.setItem('user', JSON.stringify(response.data.user))
+                    //localStorage.setItem('jwt', response.data.token)
+
+                    if(localStorage.getItem('user')!= null) {
+                        this.$emit('loggedIn')
+                        if(this.$route.params.nextUrl != null) {
+                            this.$router.push({path: '/dashboard'})
+                        }
+                        else {
+                            Vue.$router.push('login')
+                        }
+                    }
+                })
+            }
+        }
+    }
+}
+</script>
 
 <style scoped>    
     .e-login-fields{
