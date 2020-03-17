@@ -45,12 +45,13 @@ export default {
 
                     if(localStorage.getItem('user')!= null) {
                         this.$emit('loggedIn')
-                        if(this.$route.params.nextUrl != null) {
-                            this.$router.push({path: '/dashboard'})
+                        /*if(this.$route.params.nextUrl != null) {
+                            this.$router.push('/dashboard')
                         }
                         else {
-                            Vue.$router.push('login')
-                        }
+                            Vue.$router.push('/')
+                        }*/
+                        window.location.href = 'http://localhost:8080/dashboard'
                     }
                 })
             }
