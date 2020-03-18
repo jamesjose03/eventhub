@@ -1,11 +1,33 @@
 <template>
     <div>
-        <router-link :to="{name: 'login'}">
+        <router-link :to="{name: 'login'}" v-if="status">
         <button class = "nav-link e-btn">Login </button>
         </router-link>
+        <button class = "nav-link e-btn" v-else>Logout</button>
     </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      status: true
+    }
+  },
+  methods: {
+    checkLogin() {
+      if(localStorage.getItem('user')!=null) {
+        this.status= false
+      }
+      else {
+        this.status = true
+      }
+    }
+  },
+  beforeMount() {
+    this.checkLogin()
+  },
+}
+</script>
 <style>
 .e-btn{
   border: none;

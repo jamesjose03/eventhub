@@ -12,6 +12,7 @@
          <input type="password" v-model="password"><span class="highlight"></span><span class="bar"></span>
          <label>Password</label>
         </div>
+         <label v-if="show">Invalid username or password</label>
         <input type="submit" value="Login" class="button e-btn-1" @click= "handleSubmit">
 </form>
 
@@ -27,7 +28,9 @@ export default {
     data() {
         return {
             email: "",
-            password: ""
+            password: "",
+            show: false,
+            resp: []
         }
     },
     methods: {
@@ -51,9 +54,15 @@ export default {
                         else {
                             Vue.$router.push('/')
                         }*/
+                        this.show = false;
                         window.location.href = 'http://localhost:8080/dashboard'
                     }
+                    
                 })
+                .catch(function(error) {
+                    alert('Invalid username or password! Please try again.')
+                })
+                
             }
         }
     }

@@ -61,10 +61,17 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login',
-  passport.authenticate('local'),
+  passport.authenticate('local', {failWithError: true}),
   function(req, res) {
     res.json({"status":"Success", "user": req.user.name});
-  });
+  },
+  function(err,req,res,next) {
+    console.log("Error!")
+    console.log(err.name)
+    res.json({"e": err.name})
+  }
+  
+  );
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();

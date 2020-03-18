@@ -1,7 +1,7 @@
 <template v-if="display">
     <div>
         <Navbar />
-        <input type="submit" value="Logout" @click="logout()"/>
+        <Button @click.native="logout"/>
         Welcome {{ JSON.parse(username) }}
        <!-- <SideNav />
         <UserIcon />
@@ -14,6 +14,7 @@ import Navbar from "@/components/navbar.vue"
 import UserIcon from "@/components/UserIcon.vue"
 import DashboardArea from "@/components/DashboardArea.vue"
 import SideNav from "@/components/SideNav.vue"
+import Button from "@/components/Button.vue"
 import Vue from "vue";
 
 export default {
@@ -45,6 +46,7 @@ export default {
     components:
     {
         Navbar,
+        Button,
         UserIcon,
         DashboardArea,
         SideNav
@@ -53,8 +55,8 @@ export default {
 </script>
 
 <style scoped>
-.e-btn{
-    display: none;
+.e-logout-btn {
+    overflow: auto;
 }
 </style>
 
