@@ -1,37 +1,36 @@
 <template>
-    <div>
-        <router-link :to="{name: 'login'}" v-if="status">
-        <button class = "nav-link e-btn">Login </button>
-        </router-link>
-        <button class = "nav-link e-btn" v-else>Logout</button>
-    </div>
+  <div>
+    <router-link :to="{ name: 'login' }" v-if="status">
+      <button class="nav-link e-btn">Login</button>
+    </router-link>
+    <button class="nav-link e-btn" v-else>Logout</button>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
       status: true
-    }
+    };
   },
   methods: {
     checkLogin() {
-      if(localStorage.getItem('user')!=null) {
-        this.status= false
-      }
-      else {
-        this.status = true
+      if (localStorage.getItem("user") != null) {
+        this.status = false;
+      } else {
+        this.status = true;
       }
     }
   },
   beforeMount() {
-    this.checkLogin()
-  },
-}
+    this.checkLogin();
+  }
+};
 </script>
 <style>
-.e-btn{
+.e-btn {
   border: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #d896ff !important;
   border-radius: 40px;
   width: 128px;
@@ -42,8 +41,7 @@ export default {
   z-index: 100;
 }
 
-.e-btn:hover{
+.e-btn:hover {
   background-color: #efbbff !important;
 }
-
 </style>

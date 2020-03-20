@@ -1,33 +1,38 @@
 <template>
-    <div>
+  <div>
     <div id="mySidenav" class="sidenav">
-    <a href="#" class="sicon"><i class="far fa-user e-sidenavicon"></i>Profile</a>
-    <a href="#"><i class="far fa-calendar-check e-sidenavicon"></i>Events Nearby</a>
-    <a href="#" class="sicon"><i class="far fa-heart e-sidenavicon"></i>Wishlist</a>
-    <a href="#" class="sicon-1"><i class="fas fa-certificate e-sidenavicon"></i>Certificates</a>
-    <button class="e-signout-btn"><i class="fas fa-sign-out-alt e-sidenavicon"></i>Sign Out</button>
-</div>
-
-
-
+      <a href="#" class="sicon"
+        ><i class="far fa-user e-sidenavicon"></i>Profile</a
+      >
+      <a href="#"
+        ><i class="far fa-calendar-check e-sidenavicon"></i>Events Nearby</a
+      >
+      <a href="#" class="sicon"
+        ><i class="far fa-heart e-sidenavicon"></i>Wishlist</a
+      >
+      <a href="#" class="sicon-1"
+        ><i class="fas fa-certificate e-sidenavicon"></i>Certificates</a
+      >
+      <button class="e-signout-btn">
+        <i class="fas fa-sign-out-alt e-sidenavicon"></i>Sign Out
+      </button>
     </div>
+  </div>
 </template>
 
 <script>
-export default {
-   
-}
+export default {};
 </script>
 
 <style>
-.sicon{
-    margin-right: 5vw;
+.sicon {
+  margin-right: 5vw;
 }
-.sicon-1{
-    margin-right: 1.9vw;
+.sicon-1 {
+  margin-right: 1.9vw;
 }
-.e-sidenavicon{
-    margin-right: 1vw;
+.e-sidenavicon {
+  margin-right: 1vw;
 }
 /* The side navigation menu */
 .sidenav {
@@ -38,15 +43,15 @@ export default {
   top: 0; /* Stay at the top */
   left: 0;
   background: -moz-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
-  background: -webkit-linear-gradient(-45deg, #e2a9e5 15%,#2b94e5 100%);
-  background: linear-gradient(135deg, #e2a9e5 15%,#2b94e5 100%);
+  background: -webkit-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
+  background: linear-gradient(135deg, #e2a9e5 15%, #2b94e5 100%);
 
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 i:hover {
-cursor: pointer;
+  cursor: pointer;
 }
 
 /* The navigation menu links */
@@ -64,18 +69,17 @@ cursor: pointer;
   color: #f1f1f1;
 }
 
-.e-signout-btn{
-    background-color: #d896ff !important;
-    border-radius: 40px;
-    border: none;
-    height: 50px;
-    width: 130px;
-    margin-left: 1.6vw;
-    margin-top: 25vw;
+.e-signout-btn {
+  background-color: #d896ff !important;
+  border-radius: 40px;
+  border: none;
+  height: 50px;
+  width: 130px;
+  margin-left: 1.6vw;
+  margin-top: 25vw;
 }
-.e-signout-btn:hover{
-    cursor: pointer;
-     background-color: #efbbff !important;
+.e-signout-btn:hover {
+  cursor: pointer;
+  background-color: #efbbff !important;
 }
-
 </style>

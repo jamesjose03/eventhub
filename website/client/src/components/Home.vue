@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Navbar from '@/components/navbar.vue'
-import Button from '@/components/Button.vue'
-import Carousel from '@/components/carousel.vue'
-import Description from '@/components/desc.vue'
+import Navbar from "@/components/navbar.vue";
+import Button from "@/components/Button.vue";
+import Carousel from "@/components/carousel.vue";
+import Description from "@/components/desc.vue";
 export default {
   components: {
     Navbar,
@@ -19,12 +19,12 @@ export default {
     Description,
     Button
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
