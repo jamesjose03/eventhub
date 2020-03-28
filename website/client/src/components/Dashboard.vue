@@ -19,7 +19,9 @@ export default {
     return {
       ok: false,
       username: localStorage.getItem("user"),
-      display: false
+      display: false,
+      c: "",
+      v: false
     };
   },
   methods: {
@@ -36,8 +38,10 @@ export default {
     logout() {
       localStorage.removeItem("user");
       localStorage.removeItem("jwt");
+      localStorage.removeItem("category");
       window.location.href = "http://localhost:8080/";
-    }
+    },
+    
   },
   beforeMount() {
     this.checkSignedIn();

@@ -9,7 +9,7 @@ const { forwardAuthenticated } = require('../config/auth');
 
 // Register
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { name, email, password, password2, category } = req.body;
   let errors = [];
 
   if (!name || !email || !password || !password2) {
@@ -35,7 +35,8 @@ router.post('/register', (req, res) => {
         const newUser = new User({
           name,
           email,
-          password
+          password,
+          category
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -49,7 +50,7 @@ router.post('/register', (req, res) => {
                   'success_msg',
                   'You are now registered and can log in'
                 );
-                res.send({"status": "Success", "user": user.name, "email": user.email})
+                res.send({"status": "Success", "user": user.name, "email": user.email, "category": user.category })
               })
               .catch(err => console.log(err));
           });
@@ -63,7 +64,7 @@ router.post('/register', (req, res) => {
 router.post('/login',
   passport.authenticate('local', {failWithError: true}),
   function(req, res) {
-    res.json({"status":"Success", "user": req.user.name});
+    res.json({"status":"Success", "user": req.user.name, "category": req.user.category});
   },
   function(err,req,res,next) {
     console.log("Error!")

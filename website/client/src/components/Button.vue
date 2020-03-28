@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'login' }" v-if="status">
       <button class="nav-link e-btn">Login</button>
     </router-link>
-    <button class="nav-link e-btn" v-else>Logout</button>
+    <button @click="this.logout()" class="nav-link e-btn" v-else>Logout</button>
   </div>
 </template>
 <script>
@@ -20,6 +20,12 @@ export default {
       } else {
         this.status = true;
       }
+    },
+    logout() {
+      localStorage.removeItem("user");
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("category");
+      window.location.href = "http://localhost:8080/";
     }
   },
   beforeMount() {

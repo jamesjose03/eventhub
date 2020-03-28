@@ -1,6 +1,23 @@
 <template>
   <div>
+  <div v-if="viewctg">
     <div id="mySidenav" class="sidenav">
+      <a href="#" class="sicon"
+        ><i class="far fa-user e-sidenavicon"></i>Profile</a
+      >
+      <a href="#"
+        ><i class="far fa-calendar-check e-sidenavicon"></i>Events Nearby</a
+      >
+      <a href="#" class="sicon"
+        ><i class="far fa-plus e-sidenavicon"></i>Register New Event</a
+      >
+      <button class="e-signout-btn" @click="logout()">
+        <i class="fas fa-sign-out-alt e-sidenavicon"></i>Sign Out
+      </button>
+    </div>
+  </div>
+  <div v-else>
+     <div id="mySidenav" class="sidenav">
       <a href="#" class="sicon"
         ><i class="far fa-user e-sidenavicon"></i>Profile</a
       >
@@ -13,15 +30,41 @@
       <a href="#" class="sicon-1"
         ><i class="fas fa-certificate e-sidenavicon"></i>Certificates</a
       >
-      <button class="e-signout-btn">
+      <button class="e-signout-btn" @click="logout()">
         <i class="fas fa-sign-out-alt e-sidenavicon"></i>Sign Out
       </button>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      ctg: localStorage.getItem("category"),
+      viewctg: false
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("user");
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("category");
+      window.location.href = "http://localhost:8080/";
+    },
+    checkCategory() {
+      let a = "College";
+      let b = a.localeCompare(this.ctg);
+      if(b == 1) {
+        this.viewctg = true;
+      } 
+    }
+  },
+  beforeMount() {
+    this.checkCategory()
+  },
+};
 </script>
 
 <style>

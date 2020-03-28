@@ -38,6 +38,12 @@
             ><span class="bar"></span>
             <label>Confirm Password</label>
           </div>
+          <div class="group">
+            <select name="category" v-model="category">
+              <option value="Student">Student</option>
+              <option value="College">College Admin</option>
+            </select>
+          </div>
           <input
             type="submit"
             value="Sign Up"
@@ -59,7 +65,8 @@ export default {
       name: "",
       email: "",
       password: "",
-      password2: ""
+      password2: "",
+      category: ""
     };
   },
   methods: {
@@ -72,7 +79,8 @@ export default {
             name: this.name,
             email: this.email,
             password: this.password,
-            password2: this.password2
+            password2: this.password2,
+            category: this.category
           })
           .then(response => {
             localStorage.setItem("user", JSON.stringify(response.data.user));
