@@ -6,6 +6,7 @@ import Dashboard from "./components/Dashboard.vue";
 import SignUp from "./components/SignUp.vue";
 import Users from "./components/Users.vue";
 import Events from "./components/Events.vue";
+import Profile from "./components/Profile.vue";
 
 Vue.use(Router);
 
@@ -53,6 +54,11 @@ let router = new Router({
       path: "/events",
       name: "events",
       component: Events
+    },
+    {
+      path: "/viewProfile",
+      name: "profile",
+      component: Profile
     }
   ]
 });

@@ -64,7 +64,7 @@ router.post('/register', (req, res) => {
 router.post('/login',
   passport.authenticate('local', {failWithError: true}),
   function(req, res) {
-    res.json({"status":"Success", "user": req.user.name, "category": req.user.category});
+    res.json({"status":"Success", "user": req.user.name, "category": req.user.category, "email": req.user.email });
   },
   function(err,req,res,next) {
     console.log("Error!")

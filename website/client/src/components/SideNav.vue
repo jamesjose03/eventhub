@@ -8,8 +8,8 @@
       <a href="#"
         ><i class="far fa-calendar-check e-sidenavicon"></i>Events Nearby</a
       >
-      <a href="#" class="sicon"
-        ><i class="far fa-plus e-sidenavicon"></i>Register New Event</a
+      <a href="#" class="sicon navicon-three"
+        ><i class="fas fa-plus e-sidenavicon"></i>Add New Event</a
       >
       <button class="e-signout-btn" @click="logout()">
         <i class="fas fa-sign-out-alt e-sidenavicon"></i>Sign Out
@@ -41,6 +41,7 @@
 <script>
 export default {
   data() {
+    let ctg = '';
     return {
       ctg: localStorage.getItem("category"),
       viewctg: false
@@ -54,11 +55,11 @@ export default {
       window.location.href = "http://localhost:8080/";
     },
     checkCategory() {
-      let a = "College";
-      let b = a.localeCompare(this.ctg);
-      if(b == 1) {
-        this.viewctg = true;
-      } 
+      this.ctg = this.ctg.slice(1,-1);
+      this.viewctg= this.ctg.localeCompare("College") == 0 ? true : false;
+      console.log(this.ctg.localeCompare("College"))
+      console.log(this.ctg);
+      console.log(this.viewctg); 
     }
   },
   beforeMount() {
@@ -124,5 +125,8 @@ i:hover {
 .e-signout-btn:hover {
   cursor: pointer;
   background-color: #efbbff !important;
+}
+.navicon-three {
+  margin-right: 0vw;
 }
 </style>

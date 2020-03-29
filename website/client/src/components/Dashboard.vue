@@ -32,7 +32,7 @@ export default {
       ) {
         this.view = true;
       } else {
-        window.location.href = "http://localhost:8080/";
+        window.location.href = "http://localhost:8080/login";
       }
     },
     logout() {
