@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <Button />
+    <Button  />
     <Carousel />
     <Description />
   </div>
@@ -18,6 +18,15 @@ export default {
     Carousel,
     Description,
     Button
+  },
+  methods: {
+     logout() {
+      localStorage.removeItem("user");
+      localStorage.removeItem("email");
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("category");
+      window.location.href = "http://localhost:8080/";
+    }
   }
 };
 </script>

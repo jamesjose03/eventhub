@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // Load User model
 const User = require('../models/User');
+const Student = require('../models/StudentProfile')
 const { forwardAuthenticated } = require('../config/auth');
 
 
@@ -38,7 +39,21 @@ router.post('/register', (req, res) => {
           password,
           category
         });
-
+        if(category == "Student") {
+            const newStudent = new Student({
+              name,
+              email
+           });
+           newStudent
+           .save()
+           .then(student => {
+             res.send({"status": "Student Registered"})
+           })
+           .catch(err => {
+             console.log("Error!")
+           }) 
+        
+        }
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
@@ -79,5 +94,10 @@ router.get('/logout', (req, res) => {
   req.flash('success_msg', 'You are logged out');
   res.redirect('/users/login');
 });
+
+//View Profile
+router.get('/viewProfile', (req,res) => {
+
+})
 
 module.exports = router;

@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'login' }" v-if="status">
       <button class="nav-link e-btn">Login</button>
     </router-link>
-    <button @click="this.logout()" class="nav-link e-btn" v-else>Logout</button>
+    <button @click.native="logout()" class="nav-link e-btn" v-else>Logout</button>
   </div>
 </template>
 <script>

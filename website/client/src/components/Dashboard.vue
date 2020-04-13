@@ -37,6 +37,7 @@ export default {
     },
     logout() {
       localStorage.removeItem("user");
+      localStorage.removeItem("email");
       localStorage.removeItem("jwt");
       localStorage.removeItem("category");
       window.location.href = "http://localhost:8080/";
