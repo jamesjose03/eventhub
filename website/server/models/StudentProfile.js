@@ -20,6 +20,22 @@ const StudentSchema = new mongoose.Schema({
   certificate: {
       type: Array,
       default: null
+  },
+  mobileno: {
+    type: Number,
+    default: 0
+  },
+  paymentHistory: {
+    type: Array,
+    default: null
+  },
+  attended: {
+    type: Array,
+    default: null
+  },
+  verified: {
+    type: Boolean,
+    default: false
   }
   
 });
