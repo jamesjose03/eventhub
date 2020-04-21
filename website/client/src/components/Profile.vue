@@ -1,19 +1,21 @@
 <template>
     <div>
         <Navbar />
+        <SideNav />
         <h1>Welcome, {{ JSON.parse(activeUser) }} !</h1>
         <i class="far fa-user-circle e-usericon"></i>
         <i class="fas fa-plus-circle e-addButton"></i>
         <div class="slider">
-            <a href="#home" class="menu-btn">Profile</a>
-            <a href="#news" class="menu-btn">Events</a>
-            <a href="#contact" class="menu-btn">Certificates</a>
+            <a class="menu-btn">Profile</a>
+            <a class="menu-btn">Events</a>
+            <a class="menu-btn">Certificates</a>
         </div>
     </div>
 </template>
 
 <script>
 import Navbar from "@/components/navbar.vue";
+import SideNav from "@/components/SideNav.vue";
 export default {
     data() {
         return {
@@ -21,7 +23,8 @@ export default {
         }
     },
     components: {
-        Navbar
+        Navbar,
+        SideNav
     }
 
 }
@@ -42,6 +45,7 @@ export default {
 .slider {
   background-color: #fff;
   overflow: hidden;
+  margin-left: 26vw;
 }
 .slider a {
   float: left;

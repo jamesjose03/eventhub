@@ -2,7 +2,7 @@
   <div>
   <div v-if="viewctg">
     <div id="mySidenav" class="sidenav">
-      <a href="#" class="sicon"
+      <a class="sicon" @click="navigateTo(1)"
         ><i class="far fa-user e-sidenavicon"></i>Profile</a
       >
       <a href="#"
@@ -18,7 +18,7 @@
   </div>
   <div v-else>
      <div id="mySidenav" class="sidenav">
-      <a href="#" class="sicon"
+      <a class="sicon" @click="navigateTo(1)"
         ><i class="far fa-user e-sidenavicon"></i>Profile</a
       >
       <a href="#"
@@ -39,12 +39,14 @@
 </template>
 
 <script>
+import Profile from "@/components/Profile.vue";
 export default {
   data() {
     let ctg = '';
     return {
       ctg: localStorage.getItem("category"),
-      viewctg: false
+      viewctg: false,
+      active: ""
     }
   },
   methods: {
@@ -60,17 +62,28 @@ export default {
       console.log(this.ctg.localeCompare("College"))
       console.log(this.ctg);
       console.log(this.viewctg); 
+    },
+    navigateTo(n) {
+      if(n == 1) {
+        window.location.href = "http://localhost:8080/viewProfile"; 
+      }
     }
   },
   beforeMount() {
     this.checkCategory()
   },
+  components: {
+    Profile
+  }
 };
 </script>
 
 <style>
 .sicon {
   margin-right: 5vw;
+}
+.sicon:hover {
+  cursor: pointer;
 }
 .sicon-1 {
   margin-right: 1.9vw;
