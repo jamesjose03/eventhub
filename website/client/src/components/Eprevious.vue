@@ -71,12 +71,19 @@
         </div>
       </div>
     </div>
+    <img src = "../assets/previousevent.svg" class="schedule-prev-svg"/>
   </div>
 </template>
 
 <style>
 .e-upcoming-heading {
   font-family: "Staatliches", cursive;
+}
+
+.schedule-prev-svg {
+  height: 225px;
+  margin-left: 72vw;
+  margin-top: -100vw;
 }
 
 .timeline {

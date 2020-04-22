@@ -138,6 +138,7 @@ export default {
   margin-top: -14vw;
   height: 100vw;
   width: 100vw;
+  z-index: -1;
 }
 .e-lhead {
   margin-top: 1vw;

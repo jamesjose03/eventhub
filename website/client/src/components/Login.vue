@@ -2,6 +2,7 @@
   <div>
     <Navbar />
     <LoginArea />
+    <img src = "../assets/login.svg" class="login-svg"/>
   </div>
 </template>
 
@@ -19,4 +20,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.login-svg {
+  height: 266px;
+  margin-left: 72vw;
+  z-index: 2;
+}
+
+
+</style>
