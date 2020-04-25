@@ -10,6 +10,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 
+
 require('./config/passport')(passport);
 // Defining port
 const port = process.env.PORT || 9000;
@@ -40,7 +41,9 @@ app.use(express.static(__dirname + '/views/'));
 // Defining the Routes
 app.use('/api', require('./routes/index'));
 app.use('/users', require('./routes/users.js'));
+app.use('/events', require('./routes/events.js'));
 mongoose.connect(keys.mongodb.dbURI, {useNewUrlParser: true}).then(() => console.log("MongoDB connected!")).catch(err => console.log(err))
+const autoIncrement = require('mongoose-sequence');
 // Listening to port
 app.listen(port);
 console.log(`Listening On http://localhost:${port}/api`);

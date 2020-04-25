@@ -83,7 +83,7 @@ router.post('/login',
   },
   function(err,req,res,next) {
     console.log("Error!")
-    console.log(err.name)
+    console.log(err)
     res.json({"e": err.name})
   }
   

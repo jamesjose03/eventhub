@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const EventSchema = new mongoose.Schema({
   eventID: {
-      type: String,
+      type: Number,
       required: true
   },
   collegeCode: {
@@ -22,11 +22,11 @@ const EventSchema = new mongoose.Schema({
       default: 9999
   },
   deadline: {
-      type: Date,
+      type: String,
       required: true
   },
   date: {
-      type: Date,
+      type: String,
       required: true
   },
   time: {
