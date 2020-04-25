@@ -6,9 +6,11 @@
         type="email"
         v-model="search"
         placeholder="Search for events here..."
-      /><span class="highlight"></span><span class="bar"></span>
+      />
+      <span class="highlight"></span><span class="bar"></span>
+      </div>
       <label>Search</label>
-
+      <button class = "refresh-text" @click="getAllEvents()">Refresh <i class="fas fa-sync"></i></button>
       <div class="card-deck">
         <div class="card e-card">
           <div class="card-body">
@@ -19,39 +21,47 @@
             </p>
           </div>
         </div>
-        <div class="card e-card">
-          <div class="card-body">
-            <h5 class="card-title">Event 2</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              mollitia?
-            </p>
-          </div>
-        </div>
-        <div class="card e-card">
-          <div class="card-body">
-            <h5 class="card-title">Event 3</h5>
-            <p class="card-text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Molestiae, tempore eligendi? Doloremque minima eius asperiores
-              ratione blanditiis ipsam animi repellat!
-            </p>
-          </div>
-        </div>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/navbar.vue";
 export default {
+  data() {
+    return {
+      eventID: [],
+      collegeCode: [],
+      eventName: [],
+      tags: [],
+      limit: [],
+      deadline: [],
+      date: [],
+      time: []
+    }
+  },
+  methods: {
+    getAllEvents() {
+        let url = "http://localhost:9000/events/eventsList";
+        this.$http.get(url, {
+
+        })
+        .then(response => {
+          console.log(response.data.events);
+        })
+    }
+  },
   components: {
     Navbar
   }
 };
 </script>
 <style>
+.refresh-text {
+  margin-top: 3vw;
+  background: none;
+  border: none;
+}
 .card-deck {
   margin-top: 10vw;
 }

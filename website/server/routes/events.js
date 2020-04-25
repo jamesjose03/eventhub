@@ -22,9 +22,11 @@ router.post('/addEvent', (req,res) => {
 router.get('/eventsList', function(req, res) {
     Event.find({}, function(err, events) {
       let eventsMap = {};
-  
+      let c = 0;
+
       events.forEach(function(event) {
-        eventsMap[event.eventName] = event;
+        eventsMap[c] = event;
+        c = c+1;
       });
   
       res.send({ status: "Success", events: eventsMap});  
