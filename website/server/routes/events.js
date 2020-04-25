@@ -33,4 +33,12 @@ router.get('/eventsList', function(req, res) {
     });
   });
 
+router.delete('/deleteEvent/:id', (req,res) => {
+    let id = req.params.id;
+    Event.deleteOne({eventID: id}, (err, results) => {
+
+    });
+    res.send({ success: id });
+})
+
 module.exports = router;
