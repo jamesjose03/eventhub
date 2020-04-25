@@ -96,8 +96,15 @@ router.get('/logout', (req, res) => {
 });
 
 //View Profile
-router.get('/viewProfile', (req,res) => {
+router.get('/viewProfile/:email', (req,res) => {
+  let email = req.params.email;
+  User.findOne({email: email}, (err, results) => {
+    if(err) {
+      throw err;
+    }
+    res.send(results);
 
+  })
 })
 
 module.exports = router;
