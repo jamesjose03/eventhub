@@ -17,6 +17,7 @@ import Button from "@/components/Button.vue";
 export default {
   data() {
     return {
+      uid: "",
       ok: false,
       username: localStorage.getItem("user"),
       display: false,
@@ -25,12 +26,17 @@ export default {
     };
   },
   methods: {
+    getUserID() {
+      let url = "http://localhost:9000/users/getUserID/" + this.username;
+      //TO DO
+      this.$http.get()
+    },
     checkSignedIn() {
       if (
         localStorage.getItem("user") != null ||
         localStorage.getItem("user") != undefined
       ) {
-        this.view = true;
+        this.display = true;
       } else {
         window.location.href = "http://localhost:8080/login";
       }

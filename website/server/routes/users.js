@@ -107,6 +107,16 @@ router.get('/viewProfile/:email', (req,res) => {
   })
 })
 
+router.get('/getUserID/:email', (req,res) => {
+  let email = req.params.email;
+  let ID = [];
+  
+  User.findOne({email: email}).then(user => {
+    res.send(user._id);
+  }).catch(err => console.log(err));
+  
+})
+
 router.post('/updateProfile/:email', (req,res) => {
   let email = req.params.email;
   let user = {}
