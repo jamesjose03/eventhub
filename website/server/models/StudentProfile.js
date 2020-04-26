@@ -9,6 +9,14 @@ const StudentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  college: {
+    type: String,
+    default: ""
+  },
+  graduationYear: {
+    type: Number,
+    default: 0
+  },
   registered: {
     type: Array,
     default: null

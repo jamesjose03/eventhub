@@ -107,4 +107,21 @@ router.get('/viewProfile/:email', (req,res) => {
   })
 })
 
+router.post('/updateProfile/:email', (req,res) => {
+  let email = req.params.email;
+  let user = {}
+  if (req.body.name) user.name = req.body.name;
+  if (req.body.email) user.email = req.body.email;
+  if (req.body.college) user.college = req.body.college;
+  if (req.body.graduationYear) user.graduationYear = req.body.graduationYear;
+  if (req.body.mobileno) user.mobileno = req.body.mobileno;
+
+  user = { $set: user }
+  Student.update({email: email}, user).then(()=> {
+    res.send(user);
+  }).catch((err) => {
+    console.log(err);
+  })
+})
+
 module.exports = router;
