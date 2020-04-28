@@ -41,4 +41,22 @@ router.delete('/deleteEvent/:id', (req,res) => {
     res.send({ success: id });
 })
 
+router.post('/updateEvent/:id', (req,res) => {
+    let id = req.params.id;
+    let event = {}
+    if (req.body.eventName) event.eventName = req.body.eventName;
+    if (req.body.tags) event.tags = req.body.tags;
+    if (req.body.limit) event.limit = req.body.limit;
+    if (req.body.deadline) event.deadline = req.body.deadline;
+    if (req.body.date) event.date = req.body.date;
+    if (req.body.time) event.time = req.body.time;
+  
+    event = { $set: event }
+    Student.update({eventID: id}, event).then(()=> {
+      res.send(event);
+    }).catch((err) => {
+      console.log(err);
+    })
+  })
+
 module.exports = router;
