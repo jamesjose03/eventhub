@@ -52,7 +52,7 @@ router.post('/updateEvent/:id', (req,res) => {
     if (req.body.time) event.time = req.body.time;
   
     event = { $set: event }
-    Student.update({eventID: id}, event).then(()=> {
+    Event.update({eventID: id}, event).then(()=> {
       res.send(event);
     }).catch((err) => {
       console.log(err);
