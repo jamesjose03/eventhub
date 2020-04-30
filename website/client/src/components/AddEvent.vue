@@ -1,5 +1,7 @@
 <template>
     <div>
+        <img src="../assets/addEvent.svg" alt="Add Event SVG" class="svg-1">
+        <div class="addev-container">
         <h1>Add Event</h1>
         <p>Fill this form to get your event registered.</p>
         <div class="addev-form">
@@ -13,10 +15,25 @@
                 <button type="submit" class="addev-btn">Submit</button>
             </form>
         </div>
+        </div>
+        <img src="../assets/newEvent.svg" alt="Add Event SVG 2" class="svg-2">
     </div>
 </template>
 
 <style scoped>
+.svg-1 {
+    height: 200px;
+    margin-right: 75vw;
+    margin-top: 4vw;
+}
+.svg-2 {
+    height: 200px;
+    margin-left: 75vw;
+    margin-top: -41vw;
+}
+.addev-container {
+    margin-top: -12vw;
+}
 .addev-form {
     width: 45vw;
     margin-left: 28vw;
