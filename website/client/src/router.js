@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp.vue";
 import Users from "./components/Users.vue";
 import Events from "./components/Events.vue";
 import Profile from "./components/Profile.vue";
+import AddEvent from "./components/AddEvent.vue";
 
 Vue.use(Router);
 
@@ -59,6 +60,11 @@ let router = new Router({
       path: "/viewProfile",
       name: "profile",
       component: Profile
+    },
+    {
+      path: "/addEvent",
+      name: "addEvent",
+      component: AddEvent
     }
   ]
 });

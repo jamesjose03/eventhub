@@ -8,7 +8,7 @@
       <a href="#"
         ><i class="far fa-calendar-check e-sidenavicon"></i>Events Nearby</a
       >
-      <a href="#" class="sicon navicon-three"
+      <a class="sicon navicon-three" @click="navigateTo(3)"
         ><i class="fas fa-plus e-sidenavicon"></i>Add New Event</a
       >
       <button class="e-signout-btn" @click="logout()">
@@ -66,6 +66,9 @@ export default {
     navigateTo(n) {
       if(n == 1) {
         window.location.href = "http://localhost:8080/viewProfile"; 
+      }
+      else if(n == 3) {
+        window.location.href = "http://localhost:8080/addEvent";
       }
     }
   },
