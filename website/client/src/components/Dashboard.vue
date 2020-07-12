@@ -1,7 +1,7 @@
 <template v-if="display">
   <div>
     <Navbar />
-    <Button @click.native="logout" />
+    <Button v-bind:status="false" />
     Welcome {{ JSON.parse(username) }}
     <SideNav />
     <DashboardArea />

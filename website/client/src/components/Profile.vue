@@ -1,7 +1,7 @@
 <template>
     <div>
-        <Navbar />
         <SideNav />
+        <Navbar />
         <h1>Welcome, {{ JSON.parse(activeUser) }} !</h1>
         <i class="far fa-user-circle e-usericon"></i>
         <i class="fas fa-plus-circle e-addButton"></i>

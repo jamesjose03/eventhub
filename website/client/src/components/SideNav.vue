@@ -65,10 +65,10 @@ export default {
     },
     navigateTo(n) {
       if(n == 1) {
-        window.location.href = "http://localhost:8080/viewProfile"; 
+        window.location.href = location.protocol + '//' + location.host + '/viewProfile'; 
       }
       else if(n == 3) {
-        window.location.href = "http://localhost:8080/addEvent";
+        window.location.href = location.protocol + '//' + location.host + '/addEvent';
       }
     }
   },

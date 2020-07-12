@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <Button  />
+    <Button v-bind:status="checkStatus()"  />
     <Carousel />
     <Description />
   </div>
@@ -20,6 +20,14 @@ export default {
     Button
   },
   methods: {
+    checkStatus() {
+      if(localStorage.getItem("user")!=undefined) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    },
      logout() {
       localStorage.removeItem("user");
       localStorage.removeItem("email");
@@ -39,5 +47,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.popper {
+  width: 130px;
+  height: 50px;
+  margin-left: -1vw;
+}
+.e-btns {
+  font-family: "Roboto", sans-serif;
+  background-color: #660066 !important;
+  width: 128px;
+  text-decoration: none;
+  color: #fff;
 }
 </style>
