@@ -2,11 +2,9 @@
   <div>
   <div v-if="viewctg">
     <div id="mySidenav" class="sidenav">
-      <router-link :to="{path: '/dashboard/viewProfile'}">
-      <a class="sicon"
+      <a class="sicon" 
         ><i class="far fa-user e-sidenavicon"></i>Profile</a
       >
-      </router-link>
       <a href="#"
         ><i class="far fa-calendar-check e-sidenavicon"></i>Events Nearby</a
       >
