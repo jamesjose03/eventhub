@@ -5,13 +5,13 @@
         <h1>Add Event</h1>
         <p>Fill this form to get your event registered.</p>
         <div class="addev-form">
-            <form>
-                <input type="text" name ="Event Name" id="addev-name" placeholder="Event Name" />
-                <input type="text" name = "Date" id="addev-date" placeholder="Date" />
-                <input type="text" name = "Time" id="addev-time" placeholder="Time" />
-                <input type="text" name = "Deadline" id="addev-deadline" placeholder="Deadline" />
-                <input type="text" name = "Limit" id="addev-limit" placeholder="Expected audience count" />
-                <input type="text" name="tags" data-role ="tagsinput" placeholder="Tags" />
+            <form action="POST">
+                <input type="text" name ="Event Name" id="addev-name" placeholder="Event Name" v-model="name" />
+                <input type="text" name = "Date" id="addev-date" placeholder="Date" v-model="date" />
+                <input type="text" name = "Time" id="addev-time" placeholder="Time" v-model="time"/>
+                <input type="text" name = "Deadline" id="addev-deadline" placeholder="Deadline" v-model="deadline" />
+                <input type="text" name = "Limit" id="addev-limit" placeholder="Expected audience count" v-model="count" />
+               <input-tag v-model="tags" placeholder="Event tags"></input-tag>
                 <button type="submit" class="addev-btn">Submit</button>
             </form>
         </div>
@@ -19,6 +19,41 @@
         <img src="../assets/newEvent.svg" alt="Add Event SVG 2" class="svg-2">
     </div>
 </template>
+
+<script>
+
+export default {
+    data() {
+        return {
+            name: "",
+            date: "",
+            time: "",
+            deadline: "",
+            count: "",
+            tags: []
+        }
+    },
+    methods: {
+        addEvent() {
+            let url = "http://localhost:9000/events/addEvent";
+            this.$http.post(url, {
+                collegeCode: 'AJC', //to be made dynamic
+                eventName: this.name,
+                tags: this.tags,
+                limit: this.count,
+                deadline: this.deadline,
+                date: this.date,
+                time: this.time
+            })
+            .then(response => {
+                if(response.data.status == "Success") {
+                    window.location.href = location.protocol + "//" + location.host + "/dashboard";
+                }
+            })
+        }
+    },
+}
+</script>
 
 <style scoped>
 .svg-1 {

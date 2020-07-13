@@ -46,6 +46,6 @@ mongoose.connect(keys.mongodb.dbURI, {useNewUrlParser: true}).then(() => console
 const autoIncrement = require('mongoose-sequence');
 // Listening to port
 app.listen(port);
-console.log(`Listening On http://localhost:${port}/api`);
+console.log(`Listening On http://localhost:${port}`);
 
 module.exports = app;

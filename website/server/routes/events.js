@@ -3,7 +3,8 @@ const router = express.Router();
 const Event = require('../models/Event');
 
 router.post('/addEvent', (req,res) => {
-    const { eventID, collegeCode, eventName, tags, limit, deadline, date, time } = req.body;
+    const { collegeCode, eventName, tags, limit, deadline, date, time } = req.body;
+    const eventID = Date.now();
     const newEvent = new Event({
         eventID,
         collegeCode,
