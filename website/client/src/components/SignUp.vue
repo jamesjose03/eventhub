@@ -83,7 +83,8 @@ export default {
             category: this.category
           })
           .then(response => {
-            localStorage.setItem("user", response.data.user);
+            localStorage.setItem("id", response.data.id);
+            this.$cookies.set("id", response.data.id);
             window.location.href = location.protocol + '//' + location.host + '/dashboard';
           })
           .catch(error => {

@@ -64,7 +64,7 @@ export default {
       localStorage.removeItem("user");
       localStorage.removeItem("jwt");
       localStorage.removeItem("category");
-      window.location.href = "http://localhost:8080/";
+      window.location.href = location.protocol + '//'+ location.host + '/';
     },
     checkCategory() {
       this.ctg = this.ctg.slice(1,-1);
