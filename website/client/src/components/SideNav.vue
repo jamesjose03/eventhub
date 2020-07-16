@@ -149,7 +149,7 @@ i:hover {
   height: 50px;
   width: 130px;
   margin-left: 1.6vw;
-  margin-top: 20vw;
+  margin-top: 17vw;
 }
 .e-signout-btn:hover {
   cursor: pointer;

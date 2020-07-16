@@ -31,16 +31,6 @@ export default {
       //TO DO
       this.$http.get()
     },
-    checkSignedIn() {
-      if (
-        localStorage.getItem("user") != null ||
-        localStorage.getItem("user") != undefined
-      ) {
-        this.display = true;
-      } else {
-        window.location.href = "http://localhost:8080/login";
-      }
-    },
     logout() {
       localStorage.removeItem("user");
       localStorage.removeItem("email");
@@ -49,9 +39,6 @@ export default {
       window.location.href = "http://localhost:8080/";
     },
     
-  },
-  beforeMount() {
-    this.checkSignedIn();
   },
   components: {
     Navbar,

@@ -57,7 +57,7 @@ router.post('/register', (req, res) => {
                 newUser
                   .save()
                   .then(user => {
-                    res.send({"status": "Success", "user": user.name, "email": user.email, "category": user.category })
+                    res.send({"status": "Success", id: id, "category": user.category });
                   })
                   .catch(err => console.log(err));
               });
