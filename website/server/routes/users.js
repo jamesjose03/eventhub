@@ -28,12 +28,14 @@ router.post('/register', (req, res) => {
   if (errors.length > 0) {
     res.send({"status": "error", "errors": errors})
   } else {
+    const id = '_' + Math.random().toString(36).substr(2, 9);
     User.findOne({ email: email }).then(user => {
       if (user) {
         errors.push({ msg: 'Email already exists' });
         res.send({"status": "error", "errors": errors})
       } else {
         const newUser = new User({
+          id,
           name,
           email,
           password,
@@ -42,7 +44,8 @@ router.post('/register', (req, res) => {
         if(category == "Student") {
             const newStudent = new Student({
               name,
-              email
+              email,
+              id
            });
            newStudent
            .save()
@@ -132,6 +135,10 @@ router.post('/updateProfile/:email', (req,res) => {
   }).catch((err) => {
     console.log(err);
   })
+})
+
+router.get('/basicProfile/:id', (req,res) => {
+
 })
 
 module.exports = router;
