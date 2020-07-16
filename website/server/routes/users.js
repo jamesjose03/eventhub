@@ -6,6 +6,7 @@ const User = require('../models/User');
 const Student = require('../models/StudentProfile');
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 const keys = require('../config/keys');
+global.fetch = require("node-fetch");
 
 const poolData = {
   UserPoolId: keys.cognito.poolID || process.env['COGNITOUSERPOOLID'],
@@ -38,14 +39,13 @@ router.post('/register', (req, res) => {
 
   const emailAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(emailData);
   const phoneAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(phoneData);
-  const nameAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(nameData);
   const categoryAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(categoryData);
 
-  userPool.signUp(email, password, [emailAttribute, phoneAttribute, nameAttribute, categoryAttribute], null, (err, data) => {
+  userPool.signUp(email, password, [emailAttribute, phoneAttribute, categoryAttribute], null, (err, data) => {
     if (err) {
       res.send(err.message);
     }
-    const userID = data.userSub;
+    const id = data.userSub;
     const phone = phoneNo;
     const newUser = new User({
       email,
