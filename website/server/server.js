@@ -35,7 +35,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views/'));
 
 // Defining the Routes
-app.use('/api', require('./routes/index'));
 app.use('/users', require('./routes/users.js'));
 app.use('/events', require('./routes/events.js'));
 mongoose.connect(keys.mongodb.dbURI, {useNewUrlParser: true}).then(() => console.log("MongoDB connected!")).catch(err => console.log(err))
