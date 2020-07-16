@@ -3,85 +3,67 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 // Load User model
 const User = require('../models/User');
-const Student = require('../models/StudentProfile')
-const { forwardAuthenticated } = require('../config/auth');
+const Student = require('../models/StudentProfile');
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+const keys = require('../config/keys');
+
+const poolData = {
+  UserPoolId: keys.cognito.poolID || process.env['COGNITOUSERPOOLID'],
+  ClientId: keys.cognito.clientID || process.env['COGNITOCLIENTID']
+}
+
+const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 
 // Register
 router.post('/register', (req, res) => {
-  const { name, email, password, password2, category } = req.body;
-  let errors = [];
+  const email = req.body.email;
+  const password = req.body.password;
+  const phoneNo = req.body.phoneNo;
 
-  if (!name || !email || !password || !password2) {
-    errors.push({ msg: 'Please enter all fields' });
+  const emailData = {
+    Name: 'email',
+    Value: email
+  };
+
+  const phoneData = {
+    Name: 'phone_number',
+    Value: phoneNo
+  };
+
+  const categoryData = {
+    Name: 'custom:category',
+    Value: 'Student'
   }
 
-  if (password != password2) {
-    errors.push({ msg: 'Passwords do not match' });
-  }
+  const emailAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(emailData);
+  const phoneAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(phoneData);
+  const nameAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(nameData);
+  const categoryAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(categoryData);
 
-  if (password.length < 6) {
-    errors.push({ msg: 'Password must be at least 6 characters' });
-  }
-
-  if (errors.length > 0) {
-    res.send({"status": "error", "errors": errors})
-  } else {
-    const id = '_' + Math.random().toString(36).substr(2, 9);
-    User.findOne({ email: email }).then(user => {
-      if (user) {
-        errors.push({ msg: 'Email already exists' });
-        res.send({"status": "error", "errors": errors})
-      } else {
-        const newUser = new User({
-          id,
-          name,
-          email,
-          password,
-          category
-        });
-        if(category == "Student") {
-            const newStudent = new Student({
-              name,
-              email,
-              id
-           });
-           newStudent
-           .save()
-           .then(student => {
-            bcrypt.genSalt(10, (err, salt) => {
-              bcrypt.hash(newUser.password, salt, (err, hash) => {
-                if (err) throw err;
-                newUser.password = hash;
-                newUser
-                  .save()
-                  .then(user => {
-                    res.send({"status": "Success", id: id, "category": user.category });
-                  })
-                  .catch(err => console.log(err));
-              });
-            });            
-
-           })
-           .catch(err => {
-             console.log("Error!")
-           }) 
+  userPool.signUp(email, password, [emailAttribute, phoneAttribute, nameAttribute, categoryAttribute], null, (err, data) => {
+    if (err) {
+      res.send(err.message);
+    }
+    const userID = data.userSub;
+    const phone = phoneNo;
+    const newUser = new User({
+      email,
+      phone,
+      id
+    })
+    newUser
+      .save()
+      .then((user) => {
+        if (user && data.user) {
+          res.send({ status: "Success" });
         }
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser
-              .save()
-              .then(user => {
-                res.send({"status": "Success", "user": user.name, "email": user.email, "category": user.category })
-              })
-              .catch(err => console.log(err));
-          });
-        });
-      }
-    });
-  }
+        else {
+          res.send({ status: "Error" });
+        }
+      })
+      .catch(err => console.log(err))
+  })
 });
 
 // Login
