@@ -57,22 +57,9 @@ export default {
             password: this.password
           })
           .then(response => {
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            localStorage.setItem("category", JSON.stringify(response.data.category));
-            localStorage.setItem("email", JSON.stringify(response.data.email));
-            //localStorage.setItem('jwt', response.data.token)
-
-            if (localStorage.getItem("user") != null) {
-              this.$emit("loggedIn");
-              /*if(this.$route.params.nextUrl != null) {
-                            this.$router.push('/dashboard')
-                        }
-                        else {
-                            Vue.$router.push('/')
-                        }*/
-              this.show = false;
-              window.location.href = "http://localhost:8080/dashboard";
-            }
+            if(response.data.status == "Success") {
+              localStorage.setItem("category", response.data.category);
+            }  
           })
           .catch(function(error) {
             alert("Invalid username or password! Please try again.");

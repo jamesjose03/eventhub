@@ -6,12 +6,10 @@ const morgan = require('morgan');
 const winston = require('winston');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
-const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 
 
-require('./config/passport')(passport);
 // Defining port
 const port = process.env.PORT || 9000;
 
@@ -29,8 +27,6 @@ app.use(
       saveUninitialized: true
     })
   );
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(flash());
 
 app.set('view engine', 'ejs');

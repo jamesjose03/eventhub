@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const passport = require('passport');
 // Load User model
 const User = require('../models/User');
 const Student = require('../models/StudentProfile')
@@ -86,23 +85,12 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login',
-  passport.authenticate('local', {failWithError: true}),
-  function(req, res) {
-    res.json({"status":"Success", "user": req.user.name, "category": req.user.category, "email": req.user.email });
-  },
-  function(err,req,res,next) {
-    console.log("Error!")
-    console.log(err)
-    res.json({"e": err.name})
-  }
-  
-  );
+router.post('/login', (req,res) => {
+  //To be done 
+});
 // Logout
 router.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success_msg', 'You are logged out');
-  res.redirect('/users/login');
+  //To do
 });
 
 //View Profile
