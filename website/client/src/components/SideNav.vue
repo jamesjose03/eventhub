@@ -14,6 +14,7 @@
       <button class="e-signout-btn" @click="logout()">
         <i class="fas fa-sign-out-alt e-sidenavicon"></i>Sign Out
       </button>
+      <button class="Circle-3">J</button>
     </div>
   </div>
   <div v-else>
@@ -30,6 +31,15 @@
       <a href="#" class="sicon-1"
         ><i class="fas fa-certificate e-sidenavicon"></i>Certificates</a
       >
+      <div>
+        <button class="Circle-3 sicon-2">J</button>
+      </div>
+      <div>
+        James Kaviyil Jose
+      </div>
+      <div>
+        Student
+      </div>
       <button class="e-signout-btn" @click="logout()">
         <i class="fas fa-sign-out-alt e-sidenavicon"></i>Sign Out
       </button>
@@ -85,6 +95,9 @@ export default {
 .sicon {
   margin-right: 5vw;
 }
+.sicon-2 {
+  margin-top: 1vw;
+}
 .sicon:hover {
   cursor: pointer;
 }
@@ -97,7 +110,7 @@ export default {
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */
-  width: 250px;
+  width: 295px;
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
@@ -136,7 +149,7 @@ i:hover {
   height: 50px;
   width: 130px;
   margin-left: 1.6vw;
-  margin-top: 25vw;
+  margin-top: 20vw;
 }
 .e-signout-btn:hover {
   cursor: pointer;
@@ -145,4 +158,12 @@ i:hover {
 .navicon-three {
   margin-right: 0vw;
 }
+.Circle-3 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px;
+    height: 70px;
+    background-color: #DBDBDB;
+    border-radius: 50%;
+  }
 </style>
