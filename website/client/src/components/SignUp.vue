@@ -83,16 +83,8 @@ export default {
             category: this.category
           })
           .then(response => {
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            // localStorage.setItem('jwt',response.data.token)
-            if (localStorage.getItem("user") != null) {
-              this.$emit("loggedIn");
-              if (this.$route.params.nextUrl != null) {
-                this.$router.push(this.$route.params.nextUrl);
-              } else {
-                this.$router.push("/login");
-              }
-            }
+            localStorage.setItem("user", response.data.user);
+            window.location.href = location.protocol + '//' + location.host + '/dashboard';
           })
           .catch(error => {
             console.log(error);

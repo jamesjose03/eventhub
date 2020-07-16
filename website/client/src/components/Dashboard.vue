@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <Button v-bind:status="false" />
-    Welcome {{ JSON.parse(username) }}
+    Welcome !
     <SideNav />
     <DashboardArea />
   </div>

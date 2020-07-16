@@ -50,12 +50,23 @@ router.post('/register', (req, res) => {
            newStudent
            .save()
            .then(student => {
-             res.send({"status": "Student Registered"})
+            bcrypt.genSalt(10, (err, salt) => {
+              bcrypt.hash(newUser.password, salt, (err, hash) => {
+                if (err) throw err;
+                newUser.password = hash;
+                newUser
+                  .save()
+                  .then(user => {
+                    res.send({"status": "Success", "user": user.name, "email": user.email, "category": user.category })
+                  })
+                  .catch(err => console.log(err));
+              });
+            });            
+
            })
            .catch(err => {
              console.log("Error!")
            }) 
-        
         }
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -64,10 +75,6 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                req.flash(
-                  'success_msg',
-                  'You are now registered and can log in'
-                );
                 res.send({"status": "Success", "user": user.name, "email": user.email, "category": user.category })
               })
               .catch(err => console.log(err));
