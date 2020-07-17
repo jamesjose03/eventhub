@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <img src = "../assets/eventschedule.svg" class="schedule-svg"/>
+    <img src = "../../assets/eventschedule.svg" class="schedule-svg"/>
   </div>
 </template>
 

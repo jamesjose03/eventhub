@@ -2,13 +2,13 @@
   <div>
     <Navbar />
     <LoginArea />
-    <img src = "../assets/login.svg" class="login-svg"/>
+    <img src = "../../assets/login.svg" class="login-svg"/>
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/navbar.vue";
-import LoginArea from "@/components/LoginArea.vue";
+import Navbar from "@/components/Navbar/navbar.vue";
+import LoginArea from "@/components/Login/LoginArea.vue";
 export default {
   data() {
     return {};

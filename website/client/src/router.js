@@ -1,13 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./components/Home.vue";
-import Login from "./components/Login.vue";
-import Dashboard from "./components/Dashboard.vue";
-import SignUp from "./components/SignUp.vue";
-import Users from "./components/Users.vue";
-import Events from "./components/Events.vue";
-import Profile from "./components/Profile.vue";
-import AddEvent from "./components/AddEvent.vue";
+import Home from "./components/Home/Home.vue";
+import Login from "./components/Login/Login.vue";
+import Dashboard from "./components/Dashboard/Dashboard.vue";
+import SignUp from "./components/SignUp/SignUp.vue";
+import Events from "./components/Events/Events.vue";
+import Profile from "./components/Profile/Profile.vue";
+import AddEvent from "./components/AddEvent/AddEvent.vue";
 
 Vue.use(Router);
 
@@ -24,6 +23,14 @@ let router = new Router({
       path: "/login",
       name: "login",
       component: Login,
+      beforeEnter(to,from,next) {
+        if(Vue.$cookies.get("id") ==  undefined) {
+          next();
+        }
+        else {
+          window.location.href = location.protocol + '//' + location.host + '/dashboard';
+        }
+      }
     },
     {
       path: "/navbar",
@@ -31,20 +38,30 @@ let router = new Router({
       component: () => import("./views/Navbar.vue")
     },
     {
-      path: "/login",
-      name: "login",
-      component: Login
-    },
-
-    {
       path: "/signup",
       name: "signup",
       component: SignUp,
+      beforeEnter(to,from,next) {
+        if(Vue.$cookies.get("id") ==  undefined) {
+          next();
+        }
+        else {
+          window.location.href = location.protocol + '//' + location.host + '/dashboard';
+        }
+      }
     },
     {
       path: "/dashboard",
       name: "dashboard",
       component: Dashboard,
+      beforeEnter(to,from,next) {
+        if(Vue.$cookies.get("id") ==  undefined) {
+          window.location.href = location.protocol + '//' + location.host + '/login';
+        }
+        else {
+          next();
+        }
+      }
     },
     {
       path: "/user",
@@ -60,6 +77,14 @@ let router = new Router({
       path: "/viewProfile",
       name: "profile",
       component: Profile,
+      beforeEnter(to,from,next) {
+        if(Vue.$cookies.get("id") ==  undefined) {
+          window.location.href = location.protocol + '//' + location.host + '/login';
+        }
+        else {
+          next();
+        }
+      }
     },
     {
       path: "/addEvent",

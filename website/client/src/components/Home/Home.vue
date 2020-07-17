@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Navbar from "@/components/navbar.vue";
-import Button from "@/components/Button.vue";
-import Carousel from "@/components/carousel.vue";
-import Description from "@/components/desc.vue";
+import Navbar from "@/components/Navbar/navbar.vue";
+import Button from "@/components/Home/Button.vue";
+import Carousel from "@/components/Home/carousel.vue";
+import Description from "@/components/Home/desc.vue";
 export default {
   components: {
     Navbar,

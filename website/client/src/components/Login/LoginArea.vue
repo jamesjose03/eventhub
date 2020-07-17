@@ -64,6 +64,8 @@ export default {
                 id,
                 category
               })
+              this.$cookies.set("id", id);
+              this.$cookies.set("cat",category);
               window.location.href = location.protocol + '//'+location.host + '/dashboard';
             }  
           })

@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Profile from "@/components/Profile.vue";
+import Profile from "@/components/Profile/Profile.vue";
 export default {
   data() {
     let ctg = '';
@@ -61,17 +61,9 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.removeItem("user");
-      localStorage.removeItem("jwt");
-      localStorage.removeItem("category");
+      this.$cookies.remove("id");
+      this.$cookies.remove("cat");
       window.location.href = location.protocol + '//'+ location.host + '/';
-    },
-    checkCategory() {
-      this.ctg = this.ctg.slice(1,-1);
-      this.viewctg= this.ctg.localeCompare("College") == 0 ? true : false;
-      console.log(this.ctg.localeCompare("College"))
-      console.log(this.ctg);
-      console.log(this.viewctg); 
     },
     navigateTo(n) {
       if(n == 1) {
@@ -81,9 +73,6 @@ export default {
         window.location.href = location.protocol + '//' + location.host + '/addEvent';
       }
     }
-  },
-  beforeMount() {
-    this.checkCategory()
   },
   components: {
     Profile

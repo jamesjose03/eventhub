@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import Navbar from "@/components/navbar.vue";
-import DashboardArea from "@/components/DashboardArea.vue";
-import SideNav from "@/components/SideNav.vue";
-import Button from "@/components/Button.vue";
+import Navbar from "@/components/Navbar/navbar.vue";
+import DashboardArea from "@/components/Dashboard/DashboardArea.vue";
+import SideNav from "@/components/SideNav/SideNav.vue";
+import Button from "@/components/Dashboard/Button.vue";
 
 export default {
   data() {

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Navbar from "@/components/navbar.vue";
+import Navbar from "@/components/Navbar/navbar.vue";
 export default {
   data() {
     return {

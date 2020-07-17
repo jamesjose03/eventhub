@@ -30,9 +30,9 @@
   </div>
 </template>
 <script>
-import eupcoming from "@/components/Eupcoming.vue";
-import eprevious from "@/components/Eprevious.vue";
-import defaulteventview from "@/components/DefaultEventView.vue";
+import eupcoming from "@/components/Dashboard/Eupcoming.vue";
+import eprevious from "@/components/Dashboard/Eprevious.vue";
+import defaulteventview from "@/components/Dashboard/DefaultEventView.vue";
 export default {
   data() {
     return {

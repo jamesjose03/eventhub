@@ -2,16 +2,16 @@
   <div id="e-carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner e-carousel-body">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="../assets/1.jpg" alt="First slide" />
+        <img class="d-block w-100" src="../../assets/1.jpg" alt="First slide" />
         <div class="carousel-caption d-none d-md-block">
           <h5>Welcome to EventHub!</h5>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="../assets/2.jpg" alt="Second slide" />
+        <img class="d-block w-100" src="../../assets/2.jpg" alt="Second slide" />
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="../assets/3.jpg" alt="Third slide" />
+        <img class="d-block w-100" src="../../assets/3.jpg" alt="Third slide" />
       </div>
     </div>
     <a

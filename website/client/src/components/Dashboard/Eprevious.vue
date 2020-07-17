@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <img src = "../assets/previousevent.svg" class="schedule-prev-svg"/>
+    <img src = "../../assets/previousevent.svg" class="schedule-prev-svg"/>
   </div>
 </template>
 

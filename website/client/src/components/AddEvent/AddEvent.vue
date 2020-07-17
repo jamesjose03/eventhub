@@ -1,6 +1,8 @@
 <template>
     <div>
-        <img src="../assets/addEvent.svg" alt="Add Event SVG" class="svg-1">
+        <Navbar/>
+        <Button/>
+        <img src="../../assets/addEvent.svg" alt="Add Event SVG" class="svg-1">
         <div class="addev-container">
         <h1>Add Event</h1>
         <p>Fill this form to get your event registered.</p>
@@ -16,12 +18,13 @@
             </form>
         </div>
         </div>
-        <img src="../assets/newEvent.svg" alt="Add Event SVG 2" class="svg-2">
+        <img src="../../assets/newEvent.svg" alt="Add Event SVG 2" class="svg-2">
     </div>
 </template>
 
 <script>
-
+import Navbar from  '../Navbar/navbar.vue'
+import Button from './Button.vue'
 export default {
     data() {
         return {
@@ -32,6 +35,10 @@ export default {
             count: "",
             tags: []
         }
+    },
+    components: {
+        Navbar,
+        Button
     },
     methods: {
         addEvent() {

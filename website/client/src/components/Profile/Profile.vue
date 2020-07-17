@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Navbar from "@/components/navbar.vue";
-import SideNav from "@/components/SideNav.vue";
+import Navbar from "@/components/Navbar/navbar.vue";
+import SideNav from "@/components/SideNav/SideNav.vue";
 export default {
     data() {
         return {
