@@ -61,9 +61,19 @@ export default {
   },
   methods: {
     logout() {
-      this.$cookies.remove("id");
-      this.$cookies.remove("cat");
-      window.location.href = location.protocol + '//'+ location.host + '/';
+      let url = "http://localhost:9000/users/logout/" + this.$cookies.get("id");
+      this.$http.get(url)
+      .then(response => {
+        if(response.data.success == true) {
+          this.$cookies.remove("id");
+          this.$cookies.remove("cat");
+           window.location.href = location.protocol + '//'+ location.host + '/'; 
+        }
+        else {
+          alert("Cannot Log out! Please try again.");
+           window.location.href = location.protocol + '//'+ location.host + '/dashboard';
+        }
+      })
     },
     navigateTo(n) {
       if(n == 1) {
