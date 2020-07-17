@@ -6,6 +6,7 @@ const User = require('../models/User');
 const Student = require('../models/StudentProfile');
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 const keys = require('../config/keys');
+const Token = require('../models/Token');
 global.fetch = require("node-fetch");
 
 const poolData = {
@@ -82,7 +83,34 @@ router.post('/login', (req,res) => {
     onSuccess: data => {
       const username = data.idToken.payload.sub;
       const category = data.idToken.payload['custom:category']; 
-      res.send({status: "Success", id: username, cat: category});
+      const token = Math.random().toString(36).slice(2);
+      Token.findOne({id: username}, (err,results) => {
+        console.log(results);
+        if(results == null) {
+          const newToken = new Token({
+            id: username,
+            token: token
+          })
+          newToken
+          .save()
+          .then((token) => {
+            console.log('t= ' + token)
+            res.send({status: "Success", id: username, cat: category, t: token});
+          })
+          .catch(error => {
+            console.log(error);
+          })
+        }
+        else {
+          let t = {};
+          t.token = token;
+          t = {$set: t};
+          Token.updateOne({id: username}, t).then(() => {
+            res.send({status: "Success", id: username, cat: category, t: token});
+          })
+        }
+      })
+     
       
     },
     onFailure: err => {
