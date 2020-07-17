@@ -4,6 +4,9 @@ import router from "./router";
 import Axios from "axios";
 import InputTag from 'vue-input-tag'
 import VueCookies from 'vue-cookies'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
 
 //For cookies
 Vue.use(VueCookies)

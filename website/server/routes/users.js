@@ -20,7 +20,7 @@ const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 router.post('/register', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  const phoneNo = req.body.phoneNo;
+  const phone = req.body.phone;
 
   const emailData = {
     Name: 'email',
@@ -29,7 +29,7 @@ router.post('/register', (req, res) => {
 
   const phoneData = {
     Name: 'phone_number',
-    Value: phoneNo
+    Value: phone
   };
 
   const categoryData = {
@@ -46,7 +46,6 @@ router.post('/register', (req, res) => {
       res.send(err.message);
     }
     const id = data.userSub;
-    const phone = phoneNo;
     const newUser = new User({
       email,
       phone,

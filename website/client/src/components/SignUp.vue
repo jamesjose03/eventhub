@@ -3,14 +3,9 @@
     <Navbar />
     <div class="e-signup-page">
       <div class=" card container">
-        <h1 class="e-lhead">Sign Up</h1>
+        <h1 class="e-lhead">Sign Up as Student</h1>
         <p>Welcome! Sign Up to create an account & explore our platform.</p>
         <form method="POST">
-          <div class="group">
-            <input type="text" v-model="name" /><span class="highlight"></span
-            ><span class="bar"></span>
-            <label>Name</label>
-          </div>
           <!--<div class="group">
         <select name="category" id="category">
             <option value="student">Student</option>
@@ -23,6 +18,11 @@
             <input type="email" v-model="email" /><span class="highlight"></span
             ><span class="bar"></span>
             <label>Email</label>
+          </div>
+          <div class="group">
+            <input type="text" v-model="phone" /><span class="highlight"></span
+            ><span class="bar"></span>
+            <label>Phone</label>
           </div>
           <div class="group">
             <input type="password" v-model="password" /><span
@@ -38,12 +38,6 @@
             ><span class="bar"></span>
             <label>Confirm Password</label>
           </div>
-          <div class="group">
-            <select name="category" v-model="category">
-              <option value="Student">Student</option>
-              <option value="College">College Admin</option>
-            </select>
-          </div>
           <input
             type="submit"
             value="Sign Up"
@@ -53,6 +47,12 @@
         </form>
 
         <br />
+        <div class="group">
+            <p>Are you a college representative? <a href="#"> Click Here</a></p>
+        </div>
+        <div class="group">
+            <p>Have an account? Login<a href="#"> here</a></p>
+        </div>
       </div>
     </div>
   </div>
@@ -62,11 +62,11 @@ import Navbar from "@/components/navbar.vue";
 export default {
   data() {
     return {
-      name: "",
+      phone: "",
       email: "",
       password: "",
       password2: "",
-      category: ""
+      category: "Student"
     };
   },
   methods: {
@@ -76,16 +76,15 @@ export default {
         let url = "http://localhost:9000/users/register";
         this.$http
           .post(url, {
-            name: this.name,
+            phone: this.phone,
             email: this.email,
             password: this.password,
-            password2: this.password2,
             category: this.category
           })
           .then(response => {
             localStorage.setItem("id", response.data.id);
             this.$cookies.set("id", response.data.id);
-            window.location.href = location.protocol + '//' + location.host + '/dashboard';
+            window.location.href = location.protocol + '//' + location.host + '/login';
           })
           .catch(error => {
             console.log(error);
@@ -186,7 +185,7 @@ form {
 
 .group {
   position: relative;
-  margin-bottom: 45px;
+  margin-bottom: 22px;
 }
 
 input {
