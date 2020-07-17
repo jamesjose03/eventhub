@@ -24,14 +24,6 @@ let router = new Router({
       path: "/login",
       name: "login",
       component: Login,
-      beforeEnter(to,from,next) {
-        if(localStorage.getItem("user")!=undefined) {
-          window.location.href = location.protocol + '//' + location.host + '/dashboard';
-        }
-        else {
-          next();
-        }
-      }
     },
     {
       path: "/navbar",
@@ -48,27 +40,11 @@ let router = new Router({
       path: "/signup",
       name: "signup",
       component: SignUp,
-      beforeEnter(to,from,next) {
-        if(localStorage.getItem("user")!=undefined) {
-          window.location.href = location.protocol + '//' + location.host + '/dashboard';
-        }
-        else {
-          next();
-        }
-      }
     },
     {
       path: "/dashboard",
       name: "dashboard",
       component: Dashboard,
-      beforeEnter(to,from,next) {
-        if(localStorage.getItem("user")!=undefined) {
-          next();
-        }
-        else {
-          window.location.href = location.protocol + '//' + location.host + '/login';
-        }
-      }
     },
     {
       path: "/user",
@@ -84,14 +60,6 @@ let router = new Router({
       path: "/viewProfile",
       name: "profile",
       component: Profile,
-      beforeEnter(to,from,next) {
-        if(localStorage.getItem("user")!=undefined) {
-          next();
-        }
-        else {
-          window.location.href = location.protocol + '//' + location.host + '/login';
-        }
-      }
     },
     {
       path: "/addEvent",

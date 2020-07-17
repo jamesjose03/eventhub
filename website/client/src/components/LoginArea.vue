@@ -58,7 +58,13 @@ export default {
           })
           .then(response => {
             if(response.data.status == "Success") {
-              localStorage.setItem("category", response.data.category);
+              const id = response.data.id;
+              const category = response.data.category;
+              this.$store.commit('loginMutation', {
+                id,
+                category
+              })
+              window.location.href = location.protocol + '//'+location.host + '/dashboard';
             }  
           })
           .catch(function(error) {

@@ -67,7 +67,28 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', (req,res) => {
-  //To be done 
+  const LoginData = {
+    Username: req.body.email,
+    Password: req.body.password
+  }
+  const AuthenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(LoginData);
+
+  const UserData = {
+    Username: req.body.email,
+    Pool: userPool
+  }
+  const cognitoUser = new AmazonCognitoIdentity.CognitoUser(UserData);
+  cognitoUser.authenticateUser(AuthenticationDetails, {
+    onSuccess: data => {
+      const username = data.idToken.payload.sub;
+      const category = data.idToken.payload['custom:category']; 
+      res.send({status: "Success", id: username, cat: category});
+      
+    },
+    onFailure: err => {
+      res.send(err.code);
+    }
+  })
 });
 // Logout
 router.get('/logout', (req, res) => {
