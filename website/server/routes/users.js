@@ -119,8 +119,15 @@ router.post('/login', (req,res) => {
   })
 });
 // Logout
-router.get('/logout', (req, res) => {
-  //To do
+router.get('/logout/:id', (req, res) => {
+  Token.deleteOne({id: req.params.id}, (err) =>{
+    if(err) {
+      res.send({success: false});
+    }
+    else {
+      res.send({success: true});
+    }
+  })
 });
 
 //View Profile
