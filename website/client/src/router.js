@@ -64,11 +64,6 @@ let router = new Router({
       }
     },
     {
-      path: "/user",
-      name: "user",
-      component: Users
-    },
-    {
       path: "/events",
       name: "events",
       component: Events
