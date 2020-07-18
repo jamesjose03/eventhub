@@ -1,9 +1,9 @@
 <template>
   <div>
-  <div v-if="viewctg">
+  <!--<div v-if="viewctg">
     <div id="mySidenav" class="sidenav">
       <a class="sicon" 
-        ><i class="far fa-user e-sidenavicon"></i>Profile</a
+        ><i class="far fa-user e-sidenavicon" @click="navigateTo(1)"></i>Profile</a
       >
       <a href="#"
         ><i class="far fa-calendar-check e-sidenavicon"></i>Events Nearby</a
@@ -16,8 +16,8 @@
       </button>
       <button class="Circle-3">J</button>
     </div>
-  </div>
-  <div v-else>
+  </div>-->
+  <div>
      <div id="mySidenav" class="sidenav">
       <a class="sicon" @click="navigateTo(1)"
         ><i class="far fa-user e-sidenavicon"></i>Profile</a
@@ -52,10 +52,7 @@
 import Profile from "@/components/Profile/Profile.vue";
 export default {
   data() {
-    let ctg = '';
     return {
-      ctg: localStorage.getItem("category"),
-      viewctg: false,
       active: ""
     }
   },
