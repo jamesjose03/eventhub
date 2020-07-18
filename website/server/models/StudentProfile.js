@@ -8,7 +8,7 @@ const StudentSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true
+    default: ""
   },
   email: {
     type: String,
@@ -34,7 +34,7 @@ const StudentSchema = new mongoose.Schema({
       type: Array,
       default: null
   },
-  mobileno: {
+  phone: {
     type: Number,
     default: 0
   },

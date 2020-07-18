@@ -55,12 +55,16 @@ router.post('/register', (req, res) => {
     newUser
       .save()
       .then((user) => {
-        if (user && data.user) {
-          res.send({ status: "Success" });
-        }
-        else {
-          res.send({ status: "Error" });
-        }
+        const newStudent = new Student({
+          email,
+          phone,
+          id
+        })
+        newStudent
+          .save()
+          .then(student => {
+            res.send({status: "Success"});
+          })
       })
       .catch(err => console.log(err))
   })
