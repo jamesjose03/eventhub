@@ -170,8 +170,4 @@ router.post('/updateProfile/:email', (req,res) => {
   })
 })
 
-router.get('/basicProfile/:id', (req,res) => {
-
-})
-
 module.exports = router;
