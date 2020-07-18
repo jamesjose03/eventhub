@@ -146,7 +146,12 @@ router.get('/viewProfile/:email', (req,res) => {
   })
 })
 
-
+router.get('/getBasicProfile/:id', (req,res) => {
+  const id = req.params.id;
+  Student.findOne({id: id}, (err,r) => {
+    res.send(r);
+  })
+})
 
 router.post('/updateProfile/:email', (req,res) => {
   let email = req.params.email;
