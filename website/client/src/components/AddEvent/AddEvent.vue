@@ -54,6 +54,11 @@ export default {
             })
             .then(response => {
                 if(response.data.status == "Success") {
+                    Vue.$toast.open({
+                        message: 'Event added successfully!',
+                        type: 'success',
+                        position: 'bottom-left'
+                    });
                     window.location.href = location.protocol + "//" + location.host + "/dashboard";
                 }
             })
