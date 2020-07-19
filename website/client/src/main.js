@@ -5,6 +5,8 @@ import Axios from "axios";
 import InputTag from 'vue-input-tag'
 import VueCookies from 'vue-cookies'
 import Vuex from 'vuex'
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 import { stat } from "fs";
 
 Vue.use(Vuex)
@@ -14,6 +16,9 @@ Vue.use(VueCookies)
 
 // set default config
 Vue.$cookies.config('7d')
+
+//For toast notifications
+Vue.use(VueToast);
 
 
 Vue.component('input-tag', InputTag)

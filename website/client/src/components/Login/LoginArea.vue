@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 export default {
   data() {
     return {
@@ -67,10 +68,35 @@ export default {
               this.$cookies.set("id", id);
               this.$cookies.set("cat",category);
               window.location.href = location.protocol + '//'+location.host + '/dashboard';
-            }  
+            }
+            else if(response.data == "UserNotConfirmedException") {
+              Vue.$toast.open({
+              message: 'Please confirm your email!',
+              type: 'warning',
+              position: 'bottom-left'
+              });
+            }
+            else if(response.data == "NotAuthorizedException") {
+              Vue.$toast.open({
+                message: 'Invalid username or password!',
+                type: 'error',
+                position: 'bottom-left'
+              });
+            }
+            else {
+              Vue.$toast.open({
+                message: 'Invalid username or password!',
+                type: 'error',
+                position: 'bottom-left'
+              });
+            }
           })
           .catch(function(error) {
-            alert("Invalid username or password! Please try again.");
+            Vue.$toast.open({
+              message: 'Network Error!',
+              type: 'error',
+              position: 'bottom-left'
+            });
             console.log(error);
           });
       }
