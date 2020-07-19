@@ -24,7 +24,7 @@
 
 <script>
 import Navbar from  '../Navbar/navbar.vue'
-import Button from './Button.vue'
+import Button from '../Button/Button.vue'
 export default {
     data() {
         return {

@@ -9,7 +9,7 @@
 
 <script>
 import Navbar from "@/components/Navbar/navbar.vue";
-import Button from "@/components/Home/Button.vue";
+import Button from "@/components/Button/Button.vue";
 import Carousel from "@/components/Home/carousel.vue";
 import Description from "@/components/Home/desc.vue";
 export default {

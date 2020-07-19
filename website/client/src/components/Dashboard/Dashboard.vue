@@ -12,7 +12,7 @@
 import Navbar from "@/components/Navbar/navbar.vue";
 import DashboardArea from "@/components/Dashboard/DashboardArea.vue";
 import SideNav from "@/components/SideNav/SideNav.vue";
-import Button from "@/components/Dashboard/Button.vue";
+import Button from "@/components/Button/Button.vue";
 
 export default {
   data() {
