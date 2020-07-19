@@ -1,7 +1,10 @@
 <template>
   <div>
     <Navbar />
-    <div class="e-signup-page">
+    <div v-if="loading">
+      <Spinner />
+    </div>
+    <div class="e-signup-page" v-else>
       <div class=" card container">
         <h1 class="e-lhead">Sign Up as Student</h1>
         <p>Welcome! Sign Up to create an account & explore our platform.</p>
@@ -59,6 +62,7 @@
 </template>
 <script>
 import Navbar from "@/components/Navbar/navbar.vue";
+import Spinner from '@/components/Spinner/Spinner.vue';
 export default {
   data() {
     return {
@@ -66,11 +70,13 @@ export default {
       email: "",
       password: "",
       password2: "",
-      category: "Student"
+      category: "Student",
+      loading: false
     };
   },
   methods: {
     handleSubmit(e) {
+      this.loading = true;
       e.preventDefault();
       if (this.password == this.password2 && this.password.length > 0) {
         let url = "http://localhost:9000/users/register";
@@ -92,7 +98,10 @@ export default {
                 type: 'error',
                 position: 'bottom-left'
               });
-          });
+          })
+          .finally(() => {
+            this.loading = false;
+          })
       } else {
         this.password = "";
         this.password2 = "";
@@ -105,7 +114,8 @@ export default {
     }
   },
   components: {
-    Navbar
+    Navbar,
+    Spinner
   }
 };
 </script>
