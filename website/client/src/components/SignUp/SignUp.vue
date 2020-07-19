@@ -87,12 +87,20 @@ export default {
             window.location.href = location.protocol + '//' + location.host + '/login';
           })
           .catch(error => {
-            console.log(error);
+            Vue.$toast.open({
+                message: 'Network Error! Pls try again later.',
+                type: 'error',
+                position: 'bottom-left'
+              });
           });
       } else {
         this.password = "";
         this.password2 = "";
-        return alert("Passwords do not match!");
+        Vue.$toast.open({
+                message: 'Passwords do not match!',
+                type: 'error',
+                position: 'bottom-left'
+              });
       }
     }
   },
