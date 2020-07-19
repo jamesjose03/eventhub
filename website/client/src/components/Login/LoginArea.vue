@@ -1,7 +1,7 @@
 <template>
 <div>
   <div v-if="loading">
-    
+    <Spinner />
   </div>
   <div class="e-login-page" v-else>
     <div class=" card container">
@@ -43,6 +43,7 @@
 
 <script>
 import Vue from 'vue';
+import Spinner from '@/components/Spinner/Spinner.vue';
 export default {
   data() {
     return {
@@ -109,6 +110,9 @@ export default {
           .finally(() => (this.loading = false))
       }
     }
+  },
+  components: {
+    Spinner
   }
 };
 </script>
