@@ -26,11 +26,6 @@ export default {
     };
   },
   methods: {
-    getUserID() {
-      let url = "http://localhost:9000/users/getUserID/" + this.username;
-      //TO DO
-      this.$http.get()
-    },
     logout() {
       let url = "http://localhost:9000/users/logout/" + this.$cookies.get("id");
       this.$http.get(url)
