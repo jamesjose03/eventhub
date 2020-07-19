@@ -153,8 +153,8 @@ router.get('/getBasicProfile/:id', (req,res) => {
   })
 })
 
-router.post('/updateProfile/:email', (req,res) => {
-  let email = req.params.email;
+router.post('/updateProfile/:id', (req,res) => {
+  let id = req.params.id;
   let user = {}
   if (req.body.name) user.name = req.body.name;
   if (req.body.email) user.email = req.body.email;
@@ -163,7 +163,7 @@ router.post('/updateProfile/:email', (req,res) => {
   if (req.body.mobileno) user.mobileno = req.body.mobileno;
 
   user = { $set: user }
-  Student.update({email: email}, user).then(()=> {
+  Student.update({id: id}, user).then(()=> {
     res.send(user);
   }).catch((err) => {
     console.log(err);
