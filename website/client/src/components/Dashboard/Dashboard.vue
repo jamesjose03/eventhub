@@ -1,4 +1,4 @@
-<template v-if="display">
+<template>
   <div>
     <Navbar />
     <Button v-bind:status="false" />
@@ -20,7 +20,6 @@ export default {
       uid: "",
       ok: false,
       username: localStorage.getItem("user"),
-      display: false,
       c: "",
       v: false
     };

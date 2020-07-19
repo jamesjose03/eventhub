@@ -1,5 +1,9 @@
 <template>
-  <div class="e-login-page">
+<div>
+  <div v-if="loading">
+    
+  </div>
+  <div class="e-login-page" v-else>
     <div class=" card container">
       <h1 class="e-lhead">Login</h1>
       <p>Welcome back! Login here to register for events or to host them!</p>
@@ -34,6 +38,7 @@
       </p>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -44,11 +49,13 @@ export default {
       email: "",
       password: "",
       show: false,
+      loading: false,
       resp: []
     };
   },
   methods: {
     handleSubmit(e) {
+      this.loading = true;
       e.preventDefault();
       if (this.password.length > 0) {
         let url = "http://localhost:9000/users/login";
@@ -98,7 +105,8 @@ export default {
               position: 'bottom-left'
             });
             console.log(error);
-          });
+          })
+          .finally(() => (this.loading = false))
       }
     }
   }
@@ -294,4 +302,5 @@ input:focus ~ .highlight {
     background: transparent;
   }
 }
+
 </style>
