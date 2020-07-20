@@ -21,9 +21,15 @@
       <div v-else-if="nr>1">
         <div v-for="columns in rowCount" :key="events.eventID">
         <div class="row">
-          <div class="col-sm-3" v-for="column in numberOfColumns" :key="events.eventID">
+          <div class="col" v-for="column in numberOfColumns" :key="events.eventID">
             <div v-if="events.length >= layoutCount(columns, column)">
-              {{events[ind].eventName}}
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{events[ind].eventName}}</h5>
+                  <p class="card-text">{{events[ind].date}}</p>
+                  <a href="#" class="btn btn-primary">Register</a>
+              </div>
+            </div>
             </div>
           </div>
         </div>
