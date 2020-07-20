@@ -60,4 +60,10 @@ router.post('/updateEvent/:id', (req,res) => {
     })
   })
 
+  router.get('/fetchEvents', (req,res) => {
+    Event.find({}, (err, results) => {
+      res.send(results);
+    })
+  })
+
 module.exports = router;

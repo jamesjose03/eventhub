@@ -11,7 +11,7 @@
       </div>
       <label>Search</label>
       <button class = "refresh-text" @click="getAllEvents()">Refresh <i class="fas fa-sync"></i></button>
-      <div class="card-deck">
+      <div class="card-deck e-card-deck">
         <div class="card e-card">
           <div class="card-body">
             <h5 class="card-title">Event 1</h5>
@@ -154,6 +154,11 @@ input:focus ~ .bar:after {
   left: 0;
   pointer-events: none;
   opacity: 0.5;
+}
+
+.e-card-deck {
+  width: 400px;
+  height: 500px;
 }
 
 /* active */
