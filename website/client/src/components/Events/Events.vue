@@ -30,24 +30,16 @@ import Navbar from "@/components/Navbar/navbar.vue";
 export default {
   data() {
     return {
-      eventID: [],
-      collegeCode: [],
-      eventName: [],
-      tags: [],
-      limit: [],
-      deadline: [],
-      date: [],
-      time: []
+      events: [],
+      search: ""
     }
   },
   methods: {
     getAllEvents() {
-        let url = "http://localhost:9000/events/eventsList";
-        this.$http.get(url, {
-
-        })
+        let url = "http://localhost:9000/events/fetchEvents";
+        this.$http.get(url)
         .then(response => {
-          console.log(response.data.events);
+          response.data = events;
         })
     }
   },

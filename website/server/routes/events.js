@@ -20,20 +20,6 @@ router.post('/addEvent', (req,res) => {
     }).catch(error => console.log(error))
 });
 
-router.get('/eventsList', function(req, res) {
-    Event.find({}, function(err, events) {
-      let eventsMap = {};
-      let c = 0;
-
-      events.forEach(function(event) {
-        eventsMap[c] = event;
-        c = c+1;
-      });
-  
-      res.send({ status: "Success", events: eventsMap});  
-    });
-  });
-
 router.delete('/deleteEvent/:id', (req,res) => {
     let id = req.params.id;
     Event.deleteOne({eventID: id}, (err, results) => {
