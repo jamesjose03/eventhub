@@ -11,16 +11,26 @@
       </div>
       <label>Search</label>
       <button class = "refresh-text" @click="getAllEvents()">Refresh <i class="fas fa-sync"></i></button>
-      <div class="card-deck e-card-deck">
-        <div class="card e-card">
-          <div class="card-body">
-            <h5 class="card-title">Event 1</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              itaque in assumenda?
-            </p>
+      <div v-if="nr == 1">
+      <div class="row">
+      <div v-for="e in events" v-bind:key="e.eventID">
+          <h1>{{e.eventName}}</h1>
+      </div>
+      </div>
+      </div>
+      <div v-else-if="nr>1">
+        <div v-for="columns in rowCount" :key="events.eventID">
+        <div class="row">
+          <div class="col-sm-3" v-for="column in numberOfColumns" :key="events.eventID">
+            <div v-if="events.length >= layoutCount(columns, column)">
+              Hey there!
+            </div>
           </div>
         </div>
+      </div>
+      </div>
+      <div v-else>
+        <h3>No events announced yet!</h3>
       </div>
   </div>
 </template>
@@ -31,7 +41,12 @@ export default {
   data() {
     return {
       events: [],
-      search: ""
+      search: "",
+      totalEvents: 0,
+      nr: 0,
+      nc: 3,
+      data: [1,2,3,4,5,6], //sample data
+      numberOfColumns: 3
     }
   },
   methods: {
@@ -39,8 +54,18 @@ export default {
         let url = "http://localhost:9000/events/fetchEvents";
         this.$http.get(url)
         .then(response => {
-          response.data = events;
-        })
+          this.events = response.data;
+          this.totalEvents = this.events.length;
+          this.nr = Math.ceil(this.totalEvents/3);
+          })
+    },
+    layoutCount: function (rows, columns) {
+      return (rows - 1) * this.numberOfColumns + columns
+    }
+  },
+  computed: {
+    rowCount: function () {
+      return Math.floor(((this.events.length - 1) / this.numberOfColumns)) + 1
     }
   },
   components: {
