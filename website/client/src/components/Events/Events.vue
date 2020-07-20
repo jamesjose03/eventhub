@@ -23,7 +23,7 @@
         <div class="row">
           <div class="col-sm-3" v-for="column in numberOfColumns" :key="events.eventID">
             <div v-if="events.length >= layoutCount(columns, column)">
-              Hey there!
+              {{events[ind].eventName}}
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default {
       search: "",
       totalEvents: 0,
       nr: 0,
-      nc: 3,
+      ind: 0,
       data: [1,2,3,4,5,6], //sample data
       numberOfColumns: 3
     }
@@ -60,7 +60,14 @@ export default {
           })
     },
     layoutCount: function (rows, columns) {
+      let n = (rows - 1) * this.numberOfColumns + columns;
+      if(n<=this.totalEvents) {
+        this.ind = n-1;
+        return (rows - 1) * this.numberOfColumns + columns
+      }
+      else {
       return (rows - 1) * this.numberOfColumns + columns
+      }    
     }
   },
   computed: {
