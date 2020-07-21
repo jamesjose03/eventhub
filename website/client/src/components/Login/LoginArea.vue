@@ -47,7 +47,7 @@ import Spinner from '@/components/Spinner/Spinner.vue';
 export default {
   data() {
     return {
-      email: "",
+      email: (localStorage.getItem("e")!=undefined)?localStorage.getItem("e"):"",
       password: "",
       show: false,
       loading: false,
@@ -69,7 +69,7 @@ export default {
             if(response.data.status == "Success") {
               const id = response.data.id;
               const category = response.data.category;
-              localStorage.removeItem("email");
+              localStorage.removeItem("e");
               this.$store.commit('loginMutation', {
                 id,
                 category
