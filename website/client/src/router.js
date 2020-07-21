@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp/SignUp.vue";
 import Events from "./components/Events/Events.vue";
 import Profile from "./components/Profile/Profile.vue";
 import AddEvent from "./components/AddEvent/AddEvent.vue";
+import ConfirmEmail from "./components/ConfirmEmail/ConfirmEmail.vue";
 
 Vue.use(Router);
 
@@ -85,6 +86,11 @@ let router = new Router({
       path: "/addEvent",
       name: "addEvent",
       component: AddEvent
+    },
+    {
+      path: "/confirmEmail",
+      name: "confirmEmail",
+      component: ConfirmEmail
     }
   ]
 });

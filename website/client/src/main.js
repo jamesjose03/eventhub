@@ -23,7 +23,7 @@ Vue.use(VueToast);
 
 Vue.component('input-tag', InputTag)
 Vue.prototype.$http = Axios;
-Vue.prototye.$serverURLI = "http://localhost:9000";
+Vue.prototype.$serverURLI = "http://localhost:9000";
 
 Vue.config.productionTip = false;
 

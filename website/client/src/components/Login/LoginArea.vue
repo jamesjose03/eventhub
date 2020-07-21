@@ -69,6 +69,7 @@ export default {
             if(response.data.status == "Success") {
               const id = response.data.id;
               const category = response.data.category;
+              localStorage.removeItem("email");
               this.$store.commit('loginMutation', {
                 id,
                 category

@@ -88,9 +88,8 @@ export default {
             category: this.category
           })
           .then(response => {
-            this.$cookies.set("id", response.data.id);
             localStorage.setItem("e", this.email);
-            window.location.href = location.protocol + '//' + location.host + '/login';
+            window.location.href = location.protocol + '//' + location.host + '/confirmEmail';
           })
           .catch(error => {
             Vue.$toast.open({
