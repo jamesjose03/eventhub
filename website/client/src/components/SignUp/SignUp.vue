@@ -88,8 +88,8 @@ export default {
             category: this.category
           })
           .then(response => {
-            localStorage.setItem("id", response.data.id);
             this.$cookies.set("id", response.data.id);
+            localStorage.setItem("e", this.email);
             window.location.href = location.protocol + '//' + location.host + '/login';
           })
           .catch(error => {
