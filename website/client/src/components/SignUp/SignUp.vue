@@ -88,8 +88,17 @@ export default {
             category: this.category
           })
           .then(response => {
+            if(response.data.status == "Success") {
             localStorage.setItem("e", this.email);
             window.location.href = location.protocol + '//' + location.host + '/confirmEmail';
+            }
+            else {
+              Vue.$toast.open({
+                message: 'Network Error! Pls try again later.',
+                type: 'error',
+                position: 'bottom-left'
+              });
+            }          
           })
           .catch(error => {
             Vue.$toast.open({
