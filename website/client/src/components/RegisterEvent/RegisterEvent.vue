@@ -3,18 +3,18 @@
         <Navbar/>
         <Button/>
         <img src="../../assets/addEvent.svg" alt="Add Event SVG" class="svg-1">
-        <div class="addev-container">
+        <div class="regev-container">
         <h1>Register for {{EventName}}</h1>
         <p>Fill this form to get your event registered.</p>
-        <div class="addev-form">
+        <div class="regev-form">
             <form action="POST">
-                <input type="text" name ="Event Name" id="addev-name" placeholder="Event Name" v-model="name" />
-                <input type="text" name = "Date" id="addev-date" placeholder="Date" v-model="date" />
-                <input type="text" name = "Time" id="addev-time" placeholder="Time" v-model="time"/>
-                <input type="text" name = "Deadline" id="addev-deadline" placeholder="Deadline" v-model="deadline" />
-                <input type="text" name = "Limit" id="addev-limit" placeholder="Expected audience count" v-model="count" />
+                <input type="text" name ="Event Name" id="regev-name" placeholder="Event Name" v-model="name" disabled/>
+                <input type="text" name = "Student" id="regev-s" placeholder="Date" v-model="date" />
+                <input type="text" name = "Time" id="regev-time" placeholder="Time" v-model="time"/>
+                <input type="text" name = "Deadline" id="regev-deadline" placeholder="Deadline" v-model="deadline" />
+                <input type="text" name = "Limit" id="regev-limit" placeholder="Expected audience count" v-model="count" />
                <input-tag v-model="tags" placeholder="Event tags"></input-tag>
-                <button type="submit" class="addev-btn">Submit</button>
+                <button type="submit" class="regev-btn">Submit</button>
             </form>
         </div>
         </div>
@@ -28,7 +28,7 @@ import Button from '../Button/Button.vue'
 export default {
     data() {
         return {
-            name: "",
+            name: this.EventName,
             date: "",
             time: "",
             deadline: "",
@@ -57,10 +57,10 @@ export default {
     margin-left: 75vw;
     margin-top: -41vw;
 }
-.addev-container {
+.regev-container {
     margin-top: -12vw;
 }
-.addev-form {
+.regev-form {
     width: 45vw;
     margin-left: 28vw;
     background-color: #fff;
@@ -68,7 +68,7 @@ export default {
 form>input{
     background-color: #fff;
 }
-.addev-btn {
+.regev-btn {
   border: none;
   font-family: "Roboto", sans-serif;
   background-color: #d896ff !important;
@@ -81,7 +81,7 @@ form>input{
   margin-left: -4vw;
 }
 
-.addev-btn:hover {
+.regev-btn:hover {
   background-color: #efbbff !important;
 }
 </style>
