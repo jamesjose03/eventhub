@@ -56,7 +56,7 @@ router.post('/updateEvent/:id', (req,res) => {
 
   router.post('/registerEvent/:id', (req,res) => {
     const id = req.params.id;
-    const eventID, eventName, name, email, phone = req.body;
+    const {eventID, eventName, name, email, phone} = req.body;
     Student.findOne({id: id}, (err,results) => {
       if(results != null) {
         const newParticipant = new Participant({

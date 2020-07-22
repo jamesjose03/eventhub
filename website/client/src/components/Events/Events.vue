@@ -27,7 +27,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{events[ind].eventName}}</h5>
                   <p class="card-text">{{events[ind].date}}</p>
-                  <a href="#" class="btn btn-primary">Register</a>
+                  <button class="btn btn-primary" @click="registerBtnClick($event)" :value=ind>Register</button>
               </div>
             </div>
             </div>
@@ -74,6 +74,10 @@ export default {
       else {
       return (rows - 1) * this.numberOfColumns + columns
       }    
+    },
+    registerBtnClick(e) {
+      const i = e.target.value;
+      this.$router.push({name: "registerEvent", params: {EventName: this.events[i].eventName}});
     }
   },
   computed: {
@@ -114,6 +118,10 @@ input {
 
 input:focus {
   outline: none;
+}
+
+.index {
+  visibility: hidden;
 }
 
 /* Label */
