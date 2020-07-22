@@ -9,11 +9,9 @@
         <div class="regev-form">
             <form action="POST">
                 <input type="text" name ="Event Name" id="regev-name" placeholder="Event Name" v-model="name" disabled/>
-                <input type="text" name = "Student" id="regev-s" placeholder="Date" v-model="date" />
-                <input type="text" name = "Time" id="regev-time" placeholder="Time" v-model="time"/>
-                <input type="text" name = "Deadline" id="regev-deadline" placeholder="Deadline" v-model="deadline" />
-                <input type="text" name = "Limit" id="regev-limit" placeholder="Expected audience count" v-model="count" />
-               <input-tag v-model="tags" placeholder="Event tags"></input-tag>
+                <input type="text" name = "Student" id="regev-student" placeholder="Student Name" v-model="student" />
+                <input type="text" name = "Email" id="regev-email" placeholder="Email" v-model="email"/>
+                <input type="text" name = "Phone" id="regev-phone" placeholder="Phone" v-model="phone" />
                 <button type="submit" class="regev-btn">Submit</button>
             </form>
         </div>
@@ -29,11 +27,9 @@ export default {
     data() {
         return {
             name: this.EventName,
-            date: "",
-            time: "",
-            deadline: "",
-            count: "",
-            tags: []
+            student: "",
+            email: "",
+            phone: ""
         }
     },
     props: ['EventName'],
@@ -55,7 +51,7 @@ export default {
 .svg-2 {
     height: 200px;
     margin-left: 75vw;
-    margin-top: -41vw;
+    margin-top: -30vw;
 }
 .regev-container {
     margin-top: -12vw;
