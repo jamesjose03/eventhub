@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Event = require('../models/Event');
+const Participant = require('../models/Participant');
+const Student = require('../models/StudentProfile');
 
 router.post('/addEvent', (req,res) => {
     const { collegeCode, eventName, tags, limit, deadline, date, time } = req.body;
@@ -52,9 +54,30 @@ router.post('/updateEvent/:id', (req,res) => {
     })
   })
 
-  router.post('/registerEvent', (req,res) => {
-    const id = req.query.id;
-    const eventID = req.query.eventID;
+  router.post('/registerEvent/:id', (req,res) => {
+    const id = req.params.id;
+    const eventID, eventName, name, email, phone = req.body;
+    Student.findOne({id: id}, (err,results) => {
+      if(results != null) {
+        const newParticipant = new Participant({
+          id,
+          eventID,
+          name, 
+          eventName,
+          email,
+          phone
+        })
+        newParticipant
+        .save()
+        .then(participant => {
+          res.send({status: "Success", p: participant});
+        })
+        .catch(error => res.send(error));
+      }
+      else {
+        res.send({status: "Not a student!"});
+      }
+    })
   })
 
 module.exports = router;
