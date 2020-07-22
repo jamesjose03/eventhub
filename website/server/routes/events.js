@@ -52,4 +52,9 @@ router.post('/updateEvent/:id', (req,res) => {
     })
   })
 
+  router.post('/registerEvent', (req,res) => {
+    const id = req.query.id;
+    const eventID = req.query.eventID;
+  })
+
 module.exports = router;
