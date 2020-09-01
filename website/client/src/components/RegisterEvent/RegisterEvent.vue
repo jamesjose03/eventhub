@@ -12,7 +12,7 @@
                 <input type="text" name = "Student" id="regev-student" placeholder="Student Name" v-model="student" />
                 <input type="text" name = "Email" id="regev-email" placeholder="Email" v-model="email"/>
                 <input type="text" name = "Phone" id="regev-phone" placeholder="Phone" v-model="phone" />
-                <button type="submit" class="regev-btn">Submit</button>
+                <button type="submit" class="regev-btn" @click="registerEvent">Submit</button>
             </form>
         </div>
         </div>
@@ -42,7 +42,8 @@ export default {
         Button
     },
     methods: {
-        registerEvent() {
+        registerEvent(e) {
+            e.preventDefault();
             let url = "http://localhost:9000/events/registerEvent/"+ this.$cookies.get("id");
             this.$http.post(url, {
                 eventID: this.eventID,
