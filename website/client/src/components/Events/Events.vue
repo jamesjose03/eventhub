@@ -90,7 +90,14 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
+.card {
+  margin: 10px;
+}
+.card-body {
+  flex: 1 1 auto;
+  padding: 5.25rem;
+}
 .refresh-text {
   margin-top: 3vw;
   background: none;
