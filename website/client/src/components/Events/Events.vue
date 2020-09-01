@@ -1,11 +1,16 @@
 <template>
   <div>
     <Navbar />
+    <div v-if="loading">
+      <Spinner />
+    </div>
+    <div v-else>
     <div class="group e-search-box">
       <input
-        type="email"
+        type="text"
         v-model="search"
         placeholder="Search for events here..."
+        id = "search"
       />
       <span class="highlight"></span><span class="bar"></span>
       </div>
@@ -38,11 +43,13 @@
       <div v-else>
         <h3>No events announced yet!</h3>
       </div>
+      </div>
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar/navbar.vue";
+import Spinner from '@/components/Spinner/Spinner.vue';
 export default {
   data() {
     return {
@@ -52,18 +59,21 @@ export default {
       nr: 0,
       ind: 0,
       data: [1,2,3,4,5,6], //sample data
-      numberOfColumns: 3
+      numberOfColumns: 3,
+      loading: false
     }
   },
   methods: {
     getAllEvents() {
         let url = "http://localhost:9000/events/fetchEvents";
+        this.loading = true;
         this.$http.get(url)
         .then(response => {
           this.events = response.data;
           this.totalEvents = this.events.length;
           this.nr = Math.ceil(this.totalEvents/3);
           })
+        .finally(() => (this.loading = false))
     },
     layoutCount: function (rows, columns) {
       let n = (rows - 1) * this.numberOfColumns + columns;
@@ -86,7 +96,11 @@ export default {
     }
   },
   components: {
-    Navbar
+    Navbar,
+    Spinner
+  },
+  beforeMount() {
+    this.getAllEvents();
   }
 };
 </script>
