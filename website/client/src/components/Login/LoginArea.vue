@@ -68,14 +68,9 @@ export default {
           .then(response => {
             if(response.data.status == "Success") {
               const id = response.data.id;
-              const category = response.data.category;
               localStorage.removeItem("e");
-              this.$store.commit('loginMutation', {
-                id,
-                category
-              })
               this.$cookies.set("id", id);
-              this.$cookies.set("cat",category);
+
               window.location.href = location.protocol + '//'+location.host + '/dashboard';
             }
             else if(response.data == "UserNotConfirmedException") {

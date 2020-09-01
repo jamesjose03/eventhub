@@ -17,8 +17,7 @@
     "vue-input-tag": "^2.0.7",
     "vue-popperjs": "^2.3.0",
     "vue-router": "^3.0.3",
-    "vue-toast-notification": "^0.4.1",
-    "vuex": "^3.5.1"
+    "vue-toast-notification": "^0.4.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
