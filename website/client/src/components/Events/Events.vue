@@ -87,7 +87,7 @@ export default {
     },
     registerBtnClick(e) {
       const i = e.target.value;
-      this.$router.push({name: "registerEvent", params: {EventName: this.events[i].eventName}});
+      this.$router.push({name: "registerEvent", params: {EventName: this.events[i].eventName, EventID: this.events[i].eventID}});
     }
   },
   computed: {

@@ -23,21 +23,45 @@
 <script>
 import Navbar from  '../Navbar/navbar.vue'
 import Button from '../Button/Button.vue'
+import Vue from 'vue';
+import Spinner from '@/components/Spinner/Spinner.vue';
+
 export default {
     data() {
         return {
             name: this.EventName,
             student: "",
             email: "",
-            phone: ""
+            phone: "",
+            eventID: this.EventID
         }
     },
-    props: ['EventName'],
+    props: ['EventName', 'EventID'],
     components: {
         Navbar,
         Button
     },
     methods: {
+        registerEvent() {
+            let url = "http://localhost:9000/events/registerEvent/"+ this.$cookies.get("id");
+            this.$http.post(url, {
+                eventID: this.eventID,
+                eventName: this.name,
+                name: this.student,
+                email: this.email,
+                phone: this.phone
+            })
+            .then(response => {
+                if(response.data.status == "Success") {
+                    Vue.$toast.open({
+                        message: 'Registered for event successfully!',
+                        type: 'success',
+                        position: 'bottom-left'
+                    });
+                    window.location.href = location.protocol + '//'+location.host + '/dashboard';
+                }
+            })
+        }
     },
 }
 </script>
@@ -79,5 +103,112 @@ form>input{
 
 .regev-btn:hover {
   background-color: #efbbff !important;
+}
+input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  -webkit-appearance: none;
+  display: block;
+  background: #fafafa;
+  color: #636363;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #757575;
+}
+
+input:focus {
+  outline: none;
+}
+
+.index {
+  visibility: hidden;
+}
+
+/* Label */
+
+label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: -20px;
+  transition: all 0.2s ease;
+}
+
+/* active */
+
+input:focus ~ label,
+input.used ~ label {
+  top: -20px;
+  transform: scale(0.75);
+  left: -2px;
+  /* font-size: 14px; */
+  color: #660066;
+}
+
+/* Underline */
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #660066 !important;
+  transition: all 0.2s ease;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+/* active */
+
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* Highlight */
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+/* active */
+
+input:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* Animations */
+
+@keyframes inputHighlighter {
+  from {
+    background: #660066 !important;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
 }
 </style>
