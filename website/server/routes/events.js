@@ -80,4 +80,16 @@ router.post('/updateEvent/:id', (req,res) => {
     })
   })
 
+  router.get('/fetchEvents/:id',(req,res) => {
+    const id = req.params.id;
+    Participant.findOne({id: id}, (err,results) => {
+      if(results == null) {
+        res.send({status: "Not found"})
+      }
+      else {
+        res.send(results);
+      }
+    })
+  })
+
 module.exports = router;

@@ -75,6 +75,13 @@
   </div>
 </template>
 
+<script>
+export default {
+  
+}
+</script>
+
+
 <style scoped>
 .e-upcoming-heading {
   font-family: "Staatliches", cursive;
