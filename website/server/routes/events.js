@@ -5,7 +5,7 @@ const Participant = require('../models/Participant');
 const Student = require('../models/StudentProfile');
 
 router.post('/addEvent', (req,res) => {
-    const { collegeCode, eventName, tags, limit, deadline, date, time } = req.body;
+    const { collegeCode, eventName, tags, limit, deadline, date, month, year, time } = req.body;
     const eventID = Date.now();
     const newEvent = new Event({
         eventID,
@@ -15,6 +15,8 @@ router.post('/addEvent', (req,res) => {
         limit,
         deadline,
         date,
+        month,
+        year,
         time
     })
     newEvent.save().then(event => {
