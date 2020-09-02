@@ -29,6 +29,14 @@ const EventSchema = new mongoose.Schema({
       type: String,
       required: true
   },
+  month: {
+      type: String,
+      required: true
+  },
+  year: {
+      type: String,
+      required: true
+  },
   time: {
       type: String,
       required: true
