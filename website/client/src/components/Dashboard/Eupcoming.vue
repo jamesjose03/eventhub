@@ -4,6 +4,7 @@
     <p>Here are your upcoming events:</p>
     <div class="page">
       <div class="timeline">
+        <div>
         <div class="timeline__group">
           <span class="timeline__year">2019</span>
           <div class="timeline__box">
@@ -20,64 +21,22 @@
               </div>
             </div>
           </div>
-          <div class="timeline__box">
-            <div class="timeline__date">
-              <span class="timeline__day">1</span>
-              <span class="timeline__month">Sept</span>
-            </div>
-            <div class="timeline__post">
-              <div class="timeline__content">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Velit, tempore.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="timeline__group">
-          <span class="timeline__year">2020</span>
-          <div class="timeline__box">
-            <div class="timeline__date">
-              <span class="timeline__day">14</span>
-              <span class="timeline__month">Jul</span>
-            </div>
-            <div class="timeline__post">
-              <div class="timeline__content">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Suscipit, eaque.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="timeline__group">
-          <span class="timeline__year">2021</span>
-          <div class="timeline__box">
-            <div class="timeline__date">
-              <span class="timeline__day">28</span>
-              <span class="timeline__month">Aug</span>
-            </div>
-            <div class="timeline__post">
-              <div class="timeline__content">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Doloremque, aut.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
+  </div>
     <img src = "../../assets/eventschedule.svg" class="schedule-svg"/>
   </div>
 </template>
 
 <script>
 export default {
-  
+  data() {
+    return {
+      events:  []
+    }
+
+  }
 }
 </script>
 
