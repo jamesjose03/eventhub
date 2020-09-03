@@ -31,7 +31,7 @@
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">{{events[ind].eventName}}</h5>
-                  <p class="card-text">{{events[ind].date}}</p>
+                  <p class="card-text">{{events[ind].date}}-{{events[ind].month}}-{{events[ind].year}}</p>
                   <button class="btn btn-primary" @click="registerBtnClick($event)" :value=ind>Register</button>
               </div>
             </div>
