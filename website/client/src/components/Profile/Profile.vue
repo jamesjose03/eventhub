@@ -10,21 +10,27 @@
             <a class="menu-btn">Events</a>
             <a class="menu-btn">Certificates</a>
         </div>
+        <keep-alive>
+             <component :is='component' />
+        </keep-alive>
     </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar/navbar.vue";
 import SideNav from "@/components/SideNav/SideNav.vue";
+import ProfileSection from "@/components/Profile/ProfileSection.vue"
 export default {
     data() {
         return {
-            activeUser: localStorage.getItem('user')
+            activeUser: localStorage.getItem('user'),
+            component: "ProfileSection"
         }
     },
     components: {
         Navbar,
-        SideNav
+        SideNav,
+        ProfileSection
     }
 
 }
@@ -59,6 +65,7 @@ export default {
 }
 .slider a:hover {
   border-bottom: 3px solid purple;
+  cursor: pointer;
 }
 
 .slider a.active {
