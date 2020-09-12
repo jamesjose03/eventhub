@@ -1,10 +1,10 @@
 <template>
     <div>
         <Navbar />
-        <h1>Welcome, {{ JSON.parse(activeUser) }} !</h1>
-        <h3>Your bio here</h3>
+        <h1>Welcome, {{ activeUser }} !</h1>
         <i class="far fa-user-circle e-usericon"></i>
         <i class="fas fa-plus-circle e-addButton"></i>
+        <h3>{{bio}}</h3>
         <div class="slider">
             <a class="menu-btn">Profile</a>
             <a class="menu-btn">Events</a>
@@ -23,14 +23,30 @@ import ProfileSection from "@/components/Profile/ProfileSection.vue"
 export default {
     data() {
         return {
-            activeUser: localStorage.getItem('user'),
-            component: "ProfileSection"
+            activeUser: "",
+            component: "ProfileSection",
+            bio: "Student"
+        }
+    },
+    methods: {
+        fetchBio() {
+            let url = "http://localhost:9000/users/getBasicProfile/" + this.$cookies.get("id");
+            this.$http.get(url)
+            .then(response => {
+                if(response.data.status == "Success") {
+                    this.bio = response.data.p.bio;
+                    this.activeUser = response.data.p.name;
+                }
+            })
         }
     },
     components: {
         Navbar,
         SideNav,
         ProfileSection
+    },
+    beforeMount() {
+        this.fetchBio();
     }
 
 }

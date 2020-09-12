@@ -52,7 +52,7 @@ const StudentSchema = new mongoose.Schema({
   },
   bio: {
     type: String,
-    default: ""
+    default: "Student"
   }
   
 });
