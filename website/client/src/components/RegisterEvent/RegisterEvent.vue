@@ -42,6 +42,17 @@ export default {
         Button
     },
     methods: {
+        getProfileDetails() {
+            let url = "http://localhost:9000/users/getBasicProfile/" + this.$cookies.get("id");
+            this.$http.get(url)
+            .then(response => {
+                if(response.data.status == "Success") {
+                    this.student = response.data.p.name;
+                    this.email = response.data.p.email;
+                    this.phone = response.data.p.phone;
+                }
+            })
+        },
         registerEvent(e) {
             e.preventDefault();
             let url = "http://localhost:9000/events/registerEvent/"+ this.$cookies.get("id");
@@ -62,8 +73,11 @@ export default {
                     window.location.href = location.protocol + '//'+location.host + '/dashboard';
                 }
             })
-        }
+        },
     },
+    beforeMount() {
+        this.getProfileDetails()
+    }
 }
 </script>
 
