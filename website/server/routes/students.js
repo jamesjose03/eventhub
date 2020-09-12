@@ -153,6 +153,13 @@ router.get('/getBasicProfile/:id', (req,res) => {
   })
 })
 
+router.post('/updateBio/:id', (req,res) => {
+  const id = req.params.id;
+  Student.findOneAndUpdate({id: id}, {bio: req.body.bio}, (err,doc,results) => {
+    res.send({status: "Success"});
+  })
+})
+
 router.post('/updateProfile/:id', (req,res) => {
   let id = req.params.id;
   let user = {}
