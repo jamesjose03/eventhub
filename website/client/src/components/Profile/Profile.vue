@@ -4,7 +4,8 @@
         <h1>Welcome, {{ activeUser }} !</h1>
         <i class="far fa-user-circle e-usericon"></i>
         <i class="fas fa-plus-circle e-addButton"></i>
-        <h3>{{bio}}</h3>
+        <br>
+        <input type="text" class="bio-text effect-11" v-model="bio" @keyup.enter="updateBio()"/>
         <div class="slider">
             <a class="menu-btn">Profile</a>
             <a class="menu-btn">Events</a>
@@ -37,6 +38,15 @@ export default {
                     this.bio = response.data.p.bio;
                     this.activeUser = response.data.p.name;
                 }
+            })
+        },
+        updateBio() {
+            let url = "http://localhost:9000/users/updateBio/" + this.$cookies.get("id");
+            this.$http.post(url, {
+                bio: this.bio
+            })
+            .then(response => {
+                location.reload();
             })
         }
     },
@@ -86,5 +96,16 @@ export default {
 
 .slider a.active {
   border-bottom: 3px solid purple;
+}
+.bio-text {
+    border: 0;
+    text-align: center;
+    font-size: 30px;
+}
+.bio-text:focus {
+    border-bottom: 1px solid;
+}
+.bio-text:hover {
+    border-bottom: 1px solid;
 }
 </style>
